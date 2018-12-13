@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="duckcoin">
+    <ion-title>Se connecter</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2 text-center>La monnaie solidaire</h2>
+
+  <p text-CENTER>SE CONNECTER</p>
+
+  <ion-item>
+    <ion-label stacked>Email</ion-label>
+    <ion-input type="text"  [(ngModel)]="userdata.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="userdata.password"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-item class="text" *ngFor="let item of items | async">
+      {{item | json}}
+    </ion-item>
+  </ion-list>
+
+  {{error}}
+  <br>
+
+  <button ion-button block (click)="signIn()">Se connecter</button>
+
+  <br>OU<br><br>
+
+  <button ion-button block color="duckcoin" (click)="gotoSignUp()">S'inscrire</button>
+
+</ion-content>

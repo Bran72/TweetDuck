@@ -1,0 +1,9 @@
+<!-- Generated template for the TransactionComponent component -->
+<div>
+  {{text}}
+</div>
+
+<h1 bigger>Liste des transactions</h1>
+<p *ngFor="let transaction of transactions">
+  Coucou {{transaction.recipient | uppercase}} a reçu {{transaction.amount | currency:'EUR'}} de la part de {{transaction.sender | titlecase}}
+</p>
