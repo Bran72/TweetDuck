@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { DevisePipe } from './devise/devise';
 @NgModule({
-	declarations: [DevisePipe],
+	declarations: [],
 	imports: [],
-	exports: [DevisePipe]
+	exports: []
 })
 export class PipesModule {}

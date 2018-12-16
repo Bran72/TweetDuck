@@ -14,6 +14,7 @@ import { NavController, NavParams, ViewController, Platform } from 'ionic-angula
 })
 export class ModalPage {
   valeur : any;
+  transaction : any;
   constructor(public platform: Platform, public params: NavParams, public viewCtrl: ViewController) {
     var transactions = [
       {

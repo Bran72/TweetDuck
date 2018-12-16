@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 /**
  * Generated class for the BiggerDirective directive.
@@ -11,7 +11,7 @@ import { Directive } from '@angular/core';
 })
 export class BiggerDirective {
 
-  constructor() {
+  constructor(Element: ElementRef) {
     Element.nativeElement.style.fontSize = '2em';
   }
 

@@ -7,8 +7,6 @@ import { PipesModule } from '../pipes/pipes.module';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from '../app/app.component';
 
-import { MiningPage } from '../pages/mining/mining';
-import { WalletPage } from '../pages/wallet/wallet';
 import { HomePage } from '../pages/home/home';
 import { ProfilePage } from "../pages/profile/profile";
 import { LoginPage } from "../pages/login/login";
@@ -40,11 +38,10 @@ export const firebaseConfig = {
 };
 import firebase from 'firebase/app';
 firebase.initializeApp(firebaseConfig);
+
 @NgModule({
   declarations: [
     MyApp,
-    MiningPage,
-    WalletPage,
     HomePage,
     ProfilePage,
     LoginPage,
@@ -72,8 +69,6 @@ firebase.initializeApp(firebaseConfig);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    MiningPage,
-    WalletPage,
     HomePage,
     ModalPage,
     ProfilePage,

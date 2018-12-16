@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ModalController, NavParams} from 'ionic-angular';
 import { ModalPage } from '../../pages/modal/modal'; // la page modale est dans le même dossier que la principale
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase } from '@angular/fire/database';
 import firebase from 'firebase/app';
 import {SigninPage} from "../signin/signin";
 import {TabsPage} from "../tabs/tabs";
@@ -15,14 +16,10 @@ import { LikePage } from '../like/like';
 export class HomePage {
   transactions;
   username = '';
+  commentsRef:any;
+  date:any;
   items;
-  constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams : NavParams, private afAuth: AngularFireAuth) {
-      this.items = [
-          {'name':'BeautifulName', 'tweet':'Test de tweet 1 ', 'date':'19/10/2018'},
-          {'name':'BeautifulName', 'tweet':'Test de tweet 2.', 'date':'20/10/2018'},
-          {'name':'BeautifulName', 'tweet':'Test de tweet 3 ', 'date':'21/10/2018'}
-      ];
-
+  constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams : NavParams, private afAuth: AngularFireAuth, db: AngularFireDatabase) {
       afAuth.authState.subscribe(user => {
           if (!user) {
               this.navCtrl.setRoot(SigninPage);
@@ -31,6 +28,13 @@ export class HomePage {
           console.log(user);
           this.username = user.email;
       });
+
+      this.commentsRef = db.list('tweets');
+      this.date = new Date().toISOString();
+
+      //this.commentsRef.push({'tweet_id':111, 'name': 'Mon premier tweet', 'tweet': 'Le contenu de mon premier tweet', 'date':this.date});
+
+      this.items = db.list('tweets').valueChanges();
 
  } // constructor end
 

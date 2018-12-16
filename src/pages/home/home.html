@@ -1,20 +1,19 @@
 <ion-header>
-  <ion-navbar color="duckcoin">
+  <ion-navbar color="twitter">
     <ion-title>TweetDuck</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>{{username}}</h2>
+  <!--<h2 class="username">{{username}}</h2>-->
 
-  <ion-card *ngFor="let item of items">
-
+  <ion-card *ngFor="let item of items | async">
     <ion-item>
       <ion-avatar item-start>
+        <!--<h2>{{item.name}}</h2>-->
         <img src="../../assets/imgs/logo.png">
       </ion-avatar>
-      <h2>{{item.name}}</h2>
-      <p>{{item.date}}</p>
+      <ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>
     </ion-item>
 
     <ion-card-content>
@@ -22,24 +21,18 @@
     </ion-card-content>
 
     <ion-row>
-      <ion-col>
+      <ion-col class="likes_comments_bar">
         <button ion-button icon-start clear small>
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div (click)="presentLike()">12 Likes</div>
+          <div class="likes_title" (click)="presentLike()">
+            <ion-icon name="thumbs-up"></ion-icon>12
+          </div>
         </button>
-      </ion-col>
-      <ion-col>
         <button ion-button icon-start clear small>
-          <ion-icon name="text"></ion-icon>
-          <div (click)="presentComment()">4 Comments</div>
+          <div class="comments_title" (click)="presentComment()">
+            <ion-icon name="text"></ion-icon>4
+          </div>
         </button>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
       </ion-col>
     </ion-row>
-
   </ion-card>
 </ion-content>
