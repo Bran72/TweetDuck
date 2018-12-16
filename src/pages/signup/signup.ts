@@ -34,7 +34,7 @@ export class SignupPage {
     //this.navCtrl.setRoot(SignupPage);
       firebase.auth().createUserWithEmailAndPassword(this.userdata.email, this.userdata.password)
           .then(function(res) {
-            console.log('SIgnup OK', res);
+            console.log('Signup OK', res);
           })
           .catch(function(error) {
           // Handle Errors here.

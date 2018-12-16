@@ -30560,7 +30560,7 @@ page-home .scroll-content ion-card {
 }
 
 page-home .scroll-content ion-card:last-child {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #38444d;
 }
 
 page-home .scroll-content ion-card > ion-item {
@@ -30594,6 +30594,7 @@ page-home .scroll-content ion-card > ion-item > .item-inner > .input-wrapper {
 }
 
 page-home .scroll-content ion-datetime {
+  font-size: 1.2rem;
   margin: 0 !important;
   padding: 0 !important;
   color: white !important;
@@ -30612,4 +30613,24 @@ page-home .scroll-content .likes_comments_bar {
   -ms-flex-pack: distribute;
   justify-content: space-around;
   padding: 0 !important;
+}
+
+page-home .scroll-content .tweet_info, page-home .scroll-content .tweet_info_user {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+page-home .scroll-content .tweet_info_user {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: .5rem;
+}
+
+page-home .scroll-content .user_tweet {
+  font-size: .8em;
 }

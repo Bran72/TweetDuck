@@ -20,8 +20,9 @@ export class HomePage {
   date:any;
   items;
   constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams : NavParams, private afAuth: AngularFireAuth, db: AngularFireDatabase) {
+      //On s'assure et redirige l'utilisateur en fonction de son état, s'il est connecté ou non.
       afAuth.authState.subscribe(user => {
-          if (!user) {
+          if (!user) { //S'il n'est pas connecté, celui-ci est retourné sur la page Root
               this.navCtrl.setRoot(SigninPage);
               return;
           }
