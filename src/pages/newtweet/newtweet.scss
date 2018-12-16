@@ -1,0 +1,7 @@
+page-newtweet {
+  .scroll-content {
+    ion-textarea{height: 8em; overflow: scroll; margin: -1em 0 1em 0; padding: 0 1em; border: 1px solid #007aff}
+    ion-textarea textarea{height: 6em !important}
+    button{height: 2em !important; padding: 0 2em !important; float: right; margin-right: 1rem;}
+  }
+}

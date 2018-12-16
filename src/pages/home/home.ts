@@ -8,6 +8,7 @@ import {SigninPage} from "../signin/signin";
 import {TabsPage} from "../tabs/tabs";
 import { CommentPage } from '../comment/comment';
 import { LikePage } from '../like/like';
+import {NewtweetPage} from "../newtweet/newtweet";
 
 @Component({
   selector: 'page-home',
@@ -47,6 +48,12 @@ export class HomePage {
     //Pour afficher la modal des Likes
     presentLike() {
         const modal = this.modalCtrl.create(LikePage);
+        modal.present();
+    }
+
+    //Pour afficher la création de Tweets
+    presentAddTweet() {
+        const modal = this.modalCtrl.create(NewtweetPage);
         modal.present();
     }
 } //end export class HomePage

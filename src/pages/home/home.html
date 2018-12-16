@@ -6,9 +6,8 @@
 
 <ion-content padding>
   <!--<h2 class="username">{{username}}</h2>-->
-  <div class="add_tweet" (click)="presentLike()"><ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon></div>
+  <div class="add_tweet" (click)="presentAddTweet()"><ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon></div>
 
-  <ion-textarea placeholder="Dweecker quelque chose..."></ion-textarea>
   <!--<hr style="background: white">-->
   <ion-card *ngFor="let item of items | async">
     <ion-item>
