@@ -6,7 +6,10 @@
 
 <ion-content padding>
   <!--<h2 class="username">{{username}}</h2>-->
+  <div class="add_tweet" (click)="presentLike()"><ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon></div>
 
+  <ion-textarea placeholder="Dweecker quelque chose..."></ion-textarea>
+  <!--<hr style="background: white">-->
   <ion-card *ngFor="let item of items | async">
     <ion-item>
       <ion-avatar item-start>
@@ -14,7 +17,7 @@
         <span class="tweet_info">
           <img style="display: inline-block" src="../../assets/imgs/logo.png">
           <span class="tweet_info_user">
-            <p class="user_tweet" style="display: inline-block">{{username}}</p>
+            <p class="user_tweet" style="display: inline-block">{{item.tweet_user}}</p>
             <ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>
           </span>
         </span>

@@ -28,25 +28,24 @@ export class HomePage {
           }
           console.log(user);
           this.username = user.email;
+          this.commentsRef = db.list('tweets');
+          this.date = new Date().toISOString();
+
+          //this.commentsRef.push({'tweet_user':this.username, 'name': 'Mon premier tweet', 'tweet': 'Le contenu de mon premier tweet', 'date':this.date});
+
+          this.items = db.list('tweets').valueChanges();
       });
 
-      this.commentsRef = db.list('tweets');
-      this.date = new Date().toISOString();
+ } //constructor end
 
-      //this.commentsRef.push({'tweet_id':111, 'name': 'Mon premier tweet', 'tweet': 'Le contenu de mon premier tweet', 'date':this.date});
-
-      this.items = db.list('tweets').valueChanges();
-
- } // constructor end
-
+    //Pour afficher la modal des Commentaires
     presentComment() {
-
         const modal = this.modalCtrl.create(CommentPage);
         modal.present();
     }
 
+    //Pour afficher la modal des Likes
     presentLike() {
-
         const modal = this.modalCtrl.create(LikePage);
         modal.present();
     }
