@@ -8,6 +8,10 @@
   <!--<h2 class="username">{{username}}</h2>-->
   <div class="add_tweet" (click)="presentAddTweet()"><ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon></div>
 
+  <!--<ion-card *ngFor="let item of tweetComments">
+    <p>{{item.tweet}}</p>
+  </ion-card>-->
+
   <!--<hr style="background: white">-->
   <ion-card *ngFor="let item of items | async">
     <ion-item>
@@ -17,7 +21,8 @@
           <img style="display: inline-block" src="../../assets/imgs/logo.png">
           <span class="tweet_info_user">
             <p class="user_tweet" style="display: inline-block">{{item.tweet_user}}</p>
-            <ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>
+            <!--<ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>-->
+            <p>{{item.date | date: 'dd/MM/yyyy à H:mm'}}</p>
           </span>
         </span>
         <br><br>

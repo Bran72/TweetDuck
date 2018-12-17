@@ -28,6 +28,7 @@ export class CommentPage {
         this.commentsRef = db.list('comments');
         this.items = db.list('comments').valueChanges();
 
+
         //this.commentsRef.push({'name': 'AnotherName19789809', message: 'Un commentaire1000987787. ', 'tweet_id':2});
         //this.commentsRef.push({'name': 'AnotherName2', message: 'Un commentaire2. ', 'tweet_id':3});
 

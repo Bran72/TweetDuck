@@ -31,14 +31,6 @@ export class NewtweetPage {
             this.viewCtrl.dismiss();
         }
     });
-      /*afAuth.authState.subscribe(user => {
-        if(this.tweetData.content){
-            console.log(this.tweetData.content);
-            //this.commentsRef.push({'tweet_user':this.username, 'name': 'Mon premier tweet', 'tweet': 'Le contenu de mon premier tweet', 'date':this.date});
-            this.viewCtrl.dismiss();
-        }
-      }*/
-
     }
 
     dismiss() {

@@ -30,7 +30,7 @@ export class MyApp {
                 this.appCtrl.getRootNav().setRoot(SigninPage);
                 return;
             }
-            console.log(user);
+            //console.log(user);
             this.appCtrl.getRootNav().setRoot(TabsPage,
                 {'username':user.displayName, 'email':user.email});
         });

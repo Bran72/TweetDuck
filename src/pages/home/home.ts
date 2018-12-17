@@ -17,9 +17,11 @@ import {NewtweetPage} from "../newtweet/newtweet";
 export class HomePage {
   transactions;
   username = '';
-  commentsRef:any;
+  //commentsRef:any;
   date:any;
   items;
+  tweetComments:any;
+displayName:any;
   constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams : NavParams, private afAuth: AngularFireAuth, db: AngularFireDatabase) {
       //On s'assure et redirige l'utilisateur en fonction de son état, s'il est connecté ou non.
       afAuth.authState.subscribe(user => {
@@ -27,14 +29,14 @@ export class HomePage {
               this.navCtrl.setRoot(SigninPage);
               return;
           }
-          console.log(user);
           this.username = user.email;
-          this.commentsRef = db.list('tweets');
-          this.date = new Date().toISOString();
-
-          //this.commentsRef.push({'tweet_user':this.username, 'name': 'Mon premier tweet', 'tweet': 'Le contenu de mon premier tweet', 'date':this.date});
-
+          this.displayName = user.displayName; //get the user's pseudo
+          //this.commentsRef = db.list('tweets');
           this.items = db.list('tweets').valueChanges();
+          this.tweetComments = db.list('tweets').valueChanges();
+          //console.log(this.items = db.list('tweets').valueChanges());
+
+          //console.log(this.commentsRef = db.list('tweets'));
       });
 
  } //constructor end

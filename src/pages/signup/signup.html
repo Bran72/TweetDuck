@@ -8,8 +8,13 @@
   <h2 text-center>La monnaie solidaire</h2>
 
   <ion-item>
+    <ion-label stacked>Choisir une image de profil</ion-label>
+    <ion-input type="file" accept="*" [(ngModel)]="userImage"></ion-input>
+  </ion-item>
+
+  <ion-item>
     <ion-label stacked>Pseudo</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="userPseudo"></ion-input>
   </ion-item>
 
   <ion-item>
