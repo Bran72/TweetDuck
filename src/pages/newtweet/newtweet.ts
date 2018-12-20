@@ -27,8 +27,19 @@ export class NewtweetPage {
         if(this.tweetData.content){
             this.newTweet = this.db.list('tweets');
             this.date = new Date().toISOString();
-            this.newTweet.push({'tweet_user':user.email, 'tweet': this.tweetData.content, 'date':this.date});
-            this.viewCtrl.dismiss();
+            //console.log(user.displayName);
+            this.newTweet.push({'tweet_user_id':user.uid, 'tweet_user_img':user.photoURL, 'tweet_user':user.displayName, 'tweet': this.tweetData.content, 'date':this.date});
+
+            /*var tweetPush = this.newTweet.push({'tweet_user_id':user.uid, 'tweet_user_img':user.photoURL, 'tweet_user':user.displayName, 'tweet': this.tweetData.content, 'date':this.date});
+            var tweetID = tweetPush.key;
+            console.log(tweetID);*/
+            /*ref.on("value", function (snapshot) {
+                console.log('snapshot !!!!!!!!!!!!!!! ');
+                console.log(snapshot);
+            });*/
+            //this.viewCtrl.dismiss();
+
+
         }
     });
     }

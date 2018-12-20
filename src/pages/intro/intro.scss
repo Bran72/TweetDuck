@@ -1,0 +1,17 @@
+page-intro {
+  /*ion-header{display: none !important}*/
+  ion-navbar{border: unset !important}
+  .tweetduck_logo{width: 4rem !important; margin: auto !important}
+  .toolbar-background{background: #15202b !important; border-bottom: unset !important}
+  .toolbar-title{text-align: center}
+
+  .scroll-content{
+    /*margin-top: unset !important;*/
+    padding: 5rem 2rem 5rem 2rem !important;
+
+    ion-grid{height: 100%; justify-content: space-between !important;}
+    ion-grid h2{font-size: 2.8rem !important; margin-top: -44px !important;}
+    ion-grid button{width: 100% !important; margin-top: 2rem !important; font-size: 1.8rem !important}
+  }
+
+}

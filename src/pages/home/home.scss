@@ -1,5 +1,6 @@
 page-home {
     .scroll-content {
+        padding-top: 0 !important;
         font-family: 'Segoe UI Light', sans-serif;
         //img{width: 20%}
         ion-label h2{white-space: pre-line; font-size: 1.4em;}
@@ -8,7 +9,7 @@ page-home {
         ion-card:last-child{ border-bottom: 1px solid #38444d;}
         ion-card>ion-item{padding-left: 0 !important; background: #15202b !important}
         ion-card h2, ion-card p, ion-note{color: white !important;}
-        ion-card-content{margin-top: -2.5em !important; font-size: 1em; position: relative; z-index: 9; padding-left: 3.2em; padding-right: 0 !important}
+        ion-card-content{margin-top: -2.5em !important; font-size: 1em; position: relative; z-index: 9; padding-left: 3.75em; padding-right: 0 !important}
         ion-avatar{margin-right: 6px !important}
         ion-card>ion-item>.item-inner>.input-wrapper{align-items: flex-end; padding-bottom: .5rem; font-size: .65em !important; height: 3em !important}
         ion-datetime{font-size: 1.2rem; margin: 0 !important; padding: 0 !important; color: #617788 !important;}
@@ -16,11 +17,16 @@ page-home {
         .likes_title, .comments_title{}
         .likes_comments_bar{display: flex; justify-content: space-around; padding: 0 !important}
         .tweet_info, .tweet_info_user{display: flex}
+        .tweet_info img{width: 45px; height: 45px}
         .tweet_info_user{flex-direction: column; margin-left: .5rem}
-        .user_tweet{font-size: .8em}
+        .user_tweet{font-size: .8em; width: 28rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap}
 
-        .add_tweet{position: fixed; cursor: pointer; z-index: 999; font-size: 2.2em; color: #007aff; bottom: .8em; right: .2em;}
+        .add_tweet{position: fixed; cursor: pointer; z-index: 999; font-size: 2.2em; color: #007aff; bottom: 1.2em; right: .2em;}
 
+        .link_user{color: #8c8c8c;}
+        .tweet_date{font-size: 1.2rem}
+
+        ion-avatar img{overflow: unset !important;}
     }
 }
 

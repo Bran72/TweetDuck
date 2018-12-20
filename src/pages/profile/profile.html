@@ -4,37 +4,38 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
+<!--<ion-header>
   <ion-navbar color=twitter>
     <ion-title>Profile</ion-title>
   </ion-navbar>
-
-</ion-header>
-
+</ion-header>-->
 
 <ion-content padding>
-  <h2>Profil utilisateur</h2>
+  <img class="background_profil" src="../../assets/imgs/twitter_background.jpg" alt="User profil pic">
 
   <ion-grid>
     <ion-row>
-      <ion-col col-lg-1>
+      <ion-col class="user_info" col-lg-1>
         <img src="{{userImg}}" alt="User profil pic">
-      </ion-col>
-      <ion-col>
-        {{usermail}}
-        {{displayName}}
+        <h3>{{displayName}}</h3>
+        <p class="user_mail">@{{displayName}}</p>
+        <p class="user_crea">A rejoint TweetDuck le {{userCrea.creationTime | date: 'dd MMMM yyyy'}}</p>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col>
-        Passionné de programmation, dev web et Apple.
+    <ion-row class="tweet_after">
+      <ion-col class="col_tweet">
+        <span><b>Tweets</b></span>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <br>
 
-  <button ion-button color="duckcoin" (click)="gotoHome()">Aller à l'accueil</button>
+  <br>
+    <!--<ion-item *ngFor="let item of (items | async)?.slice().reverse()">
+        {{item.tweet_user}}
+    </ion-item>-->
+
+  <button ion-button color="duckcoin" (click)="logOut()">Se déconnecter</button>
+<button ion-button color="duckcoin" (click)="imageProfil()">IMAGE</button>
 
 </ion-content>

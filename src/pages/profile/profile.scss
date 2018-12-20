@@ -1,3 +1,17 @@
 page-profile {
+  .background_profil{margin-top: -9.5em !important}
 
+  .scroll-content{
+    ion-col img{border-radius: 50%; width: 8rem;}
+    .user_info > h3{margin-bottom: 0 !important}
+    .user_info > p{margin-top: 0 !important}
+    .user_mail{color: #8c8c8c}
+    .user_crea{color: #8c8c8c; font-size: 1.2rem}
+    ion-grid{margin-top: -4rem !important; background: #1a2531 !important; border-bottom: 1px solid #38444d; padding-bottom: 0 !important}
+    .tweet_after{position: relative}
+    .tweet_after:after{content: ""; display: block; width: 7.5rem; height: 2px; position: absolute; bottom: -1.5px; left: -1rem; background: #1DA1F2 }
+    .user_info img{border: 5px solid #1a2531; height: 8rem !important}
+    ion-col span{margin: 0; padding: 0}
+    .col_tweet{height: 3rem; color: #1DA1F2}
+  }
 }

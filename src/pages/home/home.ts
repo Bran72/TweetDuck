@@ -3,7 +3,7 @@ import { NavController, ModalController, NavParams} from 'ionic-angular';
 import { ModalPage } from '../../pages/modal/modal'; // la page modale est dans le même dossier que la principale
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
-import firebase from 'firebase/app';
+import firebase, {database} from 'firebase/app';
 import {SigninPage} from "../signin/signin";
 import {TabsPage} from "../tabs/tabs";
 import { CommentPage } from '../comment/comment';
@@ -17,12 +17,13 @@ import {NewtweetPage} from "../newtweet/newtweet";
 export class HomePage {
   transactions;
   username = '';
+  userimage:any;
   //commentsRef:any;
   date:any;
   items;
   tweetComments:any;
-displayName:any;
-  constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams : NavParams, private afAuth: AngularFireAuth, db: AngularFireDatabase) {
+  displayName:any;
+    constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams : NavParams, private afAuth: AngularFireAuth, db: AngularFireDatabase) {
       //On s'assure et redirige l'utilisateur en fonction de son état, s'il est connecté ou non.
       afAuth.authState.subscribe(user => {
           if (!user) { //S'il n'est pas connecté, celui-ci est retourné sur la page Root
@@ -30,12 +31,30 @@ displayName:any;
               return;
           }
           this.username = user.email;
+          this.userimage = user.photoURL;
           this.displayName = user.displayName; //get the user's pseudo
-          //this.commentsRef = db.list('tweets');
-          this.items = db.list('tweets').valueChanges();
-          this.tweetComments = db.list('tweets').valueChanges();
-          //console.log(this.items = db.list('tweets').valueChanges());
+          //this.commentsRef = db.list('comments');
 
+          this.items = db.list('tweets').valueChanges();
+
+          var ref = firebase.database().ref('tweets');
+          ref.on("child_added", function (snapshot, childKey) {
+              console.log(childKey);
+          });
+
+          /*console.log(ref.child('tweet').key);
+          ref.once('value').then(function(snapshot) {
+              var numchildren = snapshot.numChildren();
+              var key = snapshot.val();
+              var childKey = snapshot.child("tweet").key;
+              //console.log(numchildren);
+              console.log(key);
+              console.log(key.name);
+              //console.log(childKey);
+          });*/
+          //console.log(db.list('tweets').valueChanges());
+          //this.tweetComments = db.list('tweets').valueChanges();
+          //console.log(this.items = db.list('tweets').valueChanges());
           //console.log(this.commentsRef = db.list('tweets'));
       });
 
