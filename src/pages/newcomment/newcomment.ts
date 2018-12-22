@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
-import * as firebase from 'firebase';
 
 /**
  * Generated class for the NewcommentPage page.
@@ -41,6 +40,7 @@ export class NewcommentPage {
         // });
         this.db.list('tweets/'+ this.tweetKey + '/comments').push({
             user: user.displayName,
+            avatar: user.photoURL,
             date: this.date,
             comment: this.commentData.content
         })

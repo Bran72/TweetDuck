@@ -22,7 +22,7 @@ export class CommentPage {
     commentsRef:any;
     tweet: any;
     tweetKey: any;
-    constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams: NavParams, public viewCtrl: ViewController, db: AngularFireDatabase) {
+    constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams: NavParams, public viewCtrl: ViewController, public db: AngularFireDatabase) {
         /*const items = [
             {'name': 'AnotherName1', message: 'Un commentaire1. '},
             {'name': 'AnotherName2', message: 'Un commentaire2.'},

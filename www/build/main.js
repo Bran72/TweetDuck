@@ -35,6 +35,7 @@ var CommentPage = /** @class */ (function () {
         this.modalCtrl = modalCtrl;
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;
+        this.db = db;
         /*const items = [
             {'name': 'AnotherName1', message: 'Un commentaire1. '},
             {'name': 'AnotherName2', message: 'Un commentaire2.'},
@@ -61,7 +62,7 @@ var CommentPage = /** @class */ (function () {
     };
     CommentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-comment',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/'<!--\n  Generated template for the CommentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            Commentaires\n        </ion-title>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <ion-item *ngFor="let item of items | async">\n            <ion-avatar item-start>\n                <img src="../../assets/imgs/logo.png">\n            </ion-avatar>\n            <h2>{{item.user}}</h2>\n            <p>{{item.comment}}</p>\n          <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n        </ion-item>\n    </ion-list>\n    <ion-fab bottom right style="font-size: 18px;"><button (click)="presentAddComment()" style="font-size: 24px; background: blue">+</button></ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/,
+            selector: 'page-comment',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/'<!--\n  Generated template for the CommentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            Commentaires\n        </ion-title>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <ion-item *ngFor="let item of items | async">\n            <ion-avatar item-start>\n                <img src="{{item.avatar}}">\n            </ion-avatar>\n            <h2>{{item.user}}</h2>\n            <p>{{item.comment}}</p>\n          <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n        </ion-item>\n    </ion-list>\n    <ion-fab bottom right style="font-size: 18px;"><button (click)="presentAddComment()" style="font-size: 24px; background: blue">+</button></ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object])
     ], CommentPage);
@@ -126,6 +127,7 @@ var NewcommentPage = /** @class */ (function () {
                 // });
                 _this.db.list('tweets/' + _this.tweetKey + '/comments').push({
                     user: user.displayName,
+                    avatar: user.photoURL,
                     date: _this.date,
                     comment: _this.commentData.content
                 });
@@ -160,6 +162,8 @@ var NewcommentPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LikePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__ = __webpack_require__(46);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -171,6 +175,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 /**
  * Generated class for the LikePage page.
  *
@@ -178,17 +184,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var LikePage = /** @class */ (function () {
-    function LikePage(navCtrl, navParams, viewCtrl) {
+    function LikePage(navCtrl, navParams, viewCtrl, db, afAuth) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;
-        this.items = [
-            { 'name': 'AnotherName1' },
-            { 'name': 'AnotherName2' },
-            { 'name': 'AnotherName3' },
-            { 'name': 'AnotherName4' },
-        ];
+        this.db = db;
+        this.afAuth = afAuth;
+        this.tweetKey = navParams.get('key');
+        this.items = db.list('tweets/' + this.tweetKey + '/likes').valueChanges();
     }
+    LikePage.prototype.addLike = function () {
+        var _this = this;
+        this.afAuth.authState.subscribe(function (user) {
+            _this.db.list('tweets/' + _this.tweetKey + '/likes').push({
+                user_name: user.displayName,
+                user_avatar: user.photoURL
+            });
+        });
+    };
     LikePage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad LikePage');
     };
@@ -197,11 +210,12 @@ var LikePage = /** @class */ (function () {
     };
     LikePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-like',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/like/like.html"*/'<!--\n  Generated template for the LikePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n	<ion-toolbar>\n		<ion-buttons start>\n			<button ion-button (click)="dismiss()">\n				<span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n				<ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n			</button>\n		</ion-buttons>\n		<ion-title>Mentions "J\'aime"</ion-title>\n	</ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n	<ion-list>\n 		 <ion-item *ngFor="let item of items">\n    		<ion-avatar item-start>\n      			<img src="../../assets/imgs/logo.png">\n    		</ion-avatar>\n    		<h2>{{item.name}}</h2>\n\n  		</ion-item>\n	</ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/like/like.html"*/,
+            selector: 'page-like',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/like/like.html"*/'<!--\n  Generated template for the LikePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n	<ion-toolbar>\n		<ion-buttons start>\n			<button ion-button (click)="dismiss()">\n				<span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n				<ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n			</button>\n		</ion-buttons>\n		<ion-title>Mentions "J\'aime"</ion-title>\n	</ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n	<ion-list>\n 		 <ion-item *ngFor="let item of items | async">\n    		<ion-avatar item-start>\n      			<img src="{{item.user_avatar}}">\n    		</ion-avatar>\n    		<h2>{{item.user_name}}</h2>\n\n  		</ion-item>\n	</ion-list>\n  <button (click)="addLike()">Like.</button>\n</ion-content>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/like/like.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */]) === "function" && _e || Object])
     ], LikePage);
     return LikePage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=like.js.map
@@ -763,7 +777,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar color="twitter">\n    <ion-title>TweetDuck</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <!--<h2 class="username">{{username}}</h2>-->\n  <div class="add_tweet" (click)="presentAddTweet()"><ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon></div>\n\n  <!--<ion-card *ngFor="let item of tweetComments">\n    <p>{{item.tweet}}</p>\n  </ion-card>-->\n\n  <!--<hr style="background: white">-->\n  <ion-card *ngFor="let item of (items | async)?.slice().reverse()">\n    <ion-item>\n      <ion-avatar item-start>\n        <span class="tweet_info">\n          <img style="display: inline-block" src="{{item.tweet_user_img}}">\n          <span class="tweet_info_user">\n            <p class="user_tweet"><b>{{item.key}}</b> <span class="link_user">@{{item.tweet_user}}</span></p>\n            <!--<ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>-->\n            <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n          </span>\n        </span>\n        <br><br>\n      </ion-avatar>\n    </ion-item>\n\n    <ion-card-content>\n\n      <p>{{item.tweet}}</p>\n    </ion-card-content>\n\n    <ion-row>\n      <ion-col class="likes_comments_bar">\n        <button ion-button icon-start clear small>\n          <div class="likes_title" (click)="presentLike(item.key)">\n            <ion-icon name="thumbs-up"></ion-icon>12\n          </div>\n        </button>\n        <button ion-button icon-start clear small>\n          <div class="comments_title" (click)="presentComment(item.key)">\n            <ion-icon name="text"></ion-icon>{{item.comments ? countObj(item.comments) : 0}}\n          </div>\n        </button>\n      </ion-col>\n    </ion-row>\n  </ion-card>\n</ion-content>\n\n<script>\n  console.log(\'TOO\');\n</script><script src="build/vendor.js"></script>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar color="twitter">\n    <ion-title>TweetDuck</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <!--<h2 class="username">{{username}}</h2>-->\n  <div class="add_tweet" (click)="presentAddTweet()"><ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon></div>\n\n  <!--<ion-card *ngFor="let item of tweetComments">\n    <p>{{item.tweet}}</p>\n  </ion-card>-->\n\n  <!--<hr style="background: white">-->\n  <ion-card *ngFor="let item of (items | async)?.slice().reverse()">\n    <ion-item>\n      <ion-avatar item-start>\n        <span class="tweet_info">\n          <img style="display: inline-block" src="{{item.tweet_user_img}}">\n          <span class="tweet_info_user">\n            <p class="user_tweet"><b>{{item.tweet_user}}</b> <span class="link_user">@{{item.tweet_user}}</span></p>\n            <!--<ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>-->\n            <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n          </span>\n        </span>\n        <br><br>\n      </ion-avatar>\n    </ion-item>\n\n    <ion-card-content>\n\n      <p>{{item.tweet}}</p>\n    </ion-card-content>\n\n    <ion-row>\n      <ion-col class="likes_comments_bar">\n        <button ion-button icon-start clear small>\n          <div class="likes_title" (click)="presentLike(item.key)">\n            <ion-icon name="thumbs-up"></ion-icon>{{item.likes ? countObj(item.likes) : 0}}\n          </div>\n        </button>\n        <button ion-button icon-start clear small>\n          <div class="comments_title" (click)="presentComment(item.key)">\n            <ion-icon name="text"></ion-icon>{{item.comments ? countObj(item.comments) : 0}}\n          </div>\n        </button>\n      </ion-col>\n    </ion-row>\n  </ion-card>\n</ion-content>\n\n<script>\n  console.log(\'TOO\');\n</script><script src="build/vendor.js"></script>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object])
     ], HomePage);
