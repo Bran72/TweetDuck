@@ -62,7 +62,7 @@ var CommentPage = /** @class */ (function () {
     };
     CommentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-comment',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/'<!--\n  Generated template for the CommentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            Commentaires\n        </ion-title>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <ion-item *ngFor="let item of items | async">\n            <ion-avatar item-start>\n                <img src="../../assets/imgs/logo.png">\n            </ion-avatar>\n            <h2>{{item.name}}</h2>\n            <p>{{item.message}}</p>\n        </ion-item>\n    </ion-list>\n    <ion-fab bottom right style="font-size: 18px;"><button (click)="presentAddComment(tweet)" style="font-size: 24px; background: blue">+</button></ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/,
+            selector: 'page-comment',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/'<!--\n  Generated template for the CommentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            Commentaires\n        </ion-title>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <ion-item *ngFor="let item of items | async">\n            <ion-avatar item-start>\n                <img src="../../assets/imgs/logo.png">\n            </ion-avatar>\n            <h2>{{item.name}}</h2>\n            <p>{{item.message}}</p>\n          <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n        </ion-item>\n    </ion-list>\n    <ion-fab bottom right style="font-size: 18px;"><button (click)="presentAddComment(tweet)" style="font-size: 24px; background: blue">+</button></ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object])
     ], CommentPage);
@@ -123,17 +123,16 @@ var NewcommentPage = /** @class */ (function () {
         this.afAuth.authState.subscribe(function (user) {
             var user_id = _this.userID;
             if (_this.commentData.content) {
-                _this.tweeet = _this.db.list("tweets/${tweetId}");
+                _this.comments = _this.db.list("comments/");
                 _this.date = new Date().toISOString();
-                console.log('tweeeet', _this.tweeet);
-                _this.tweeet.push().set({
-                    'comments': {
-                        'comment_user': user.displayName,
-                        'comment': _this.commentData.content,
-                        'date': _this.date
-                    }
+                console.log('tweeeet', _this.comments);
+                _this.comments.push({
+                    'name': user.displayName,
+                    'message': _this.commentData.content,
+                    'date': _this.date
                 });
             }
+            _this.viewCtrl.dismiss();
         });
     };
     NewcommentPage.prototype.dismiss = function () {

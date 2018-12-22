@@ -18,7 +18,7 @@ import * as firebase from 'firebase';
 })
 export class NewcommentPage {
   commentData: any = {};
-  tweeet: any;
+  comments: any;
   tweet: any;
   tweetID: any;
   userID: any;
@@ -35,18 +35,18 @@ export class NewcommentPage {
     this.afAuth.authState.subscribe(user => {
       var user_id = this.userID;
       if(this.commentData.content) {
-        this.tweeet = this.db.list("tweets/${tweetId}");
+        this.comments = this.db.list("comments/");
         this.date = new Date().toISOString();
-        console.log('tweeeet', this.tweeet)
-        this.tweeet.push().set({
-          'comments': {
-            'comment_user': user.displayName,
-            'comment': this.commentData.content,
+        console.log('tweeeet', this.comments)
+        this.comments.push({
+            'name': user.displayName,
+            'message': this.commentData.content,
             'date': this.date
-          }
+
         });
 
       }
+      this.viewCtrl.dismiss();
     })
 
   }
