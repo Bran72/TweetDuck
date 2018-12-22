@@ -92,8 +92,8 @@ export class HomePage {
  } //constructor end
 
     //Pour afficher la modal des Commentaires
-    presentComment() {
-        const modal = this.modalCtrl.create(CommentPage);
+    presentComment(tweet) {
+        const modal = this.modalCtrl.create(CommentPage, {tweet: tweet});
         modal.present();
     }
 
@@ -108,6 +108,12 @@ export class HomePage {
         const modal = this.modalCtrl.create(NewtweetPage);
         modal.present();
     }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad NewcommentPage', this.items);
+  }
+
+
 } //end export class HomePage
 
 

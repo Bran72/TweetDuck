@@ -14,6 +14,7 @@ import { LoginPage } from "../pages/login/login";
 import { ModalPage } from '../pages/modal/modal';
 import { TabsPage } from '../pages/tabs/tabs';
 import { NewtweetPage } from '../pages/newtweet/newtweet';
+import { NewcommentPage } from "../pages/newcomment/newcomment";
 import { LikePage } from '../pages/like/like';
 import { CommentPage } from '../pages/comment/comment';
 import { ImageUploadPage } from '../pages/image-upload/image-upload';
@@ -62,6 +63,7 @@ firebase.initializeApp(firebaseConfig);
     CommentPage,
     LikePage,
     NewtweetPage,
+    NewcommentPage,
     ImageUploadPage,
     TabsPage
   ],
@@ -93,7 +95,8 @@ firebase.initializeApp(firebaseConfig);
     LikePage,
     TabsPage,
     ImageUploadPage,
-    NewtweetPage
+    NewtweetPage,
+    NewcommentPage
   ],
   providers: [
     StatusBar,
