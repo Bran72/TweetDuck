@@ -85,6 +85,12 @@ export class SignupPage {
         let username = this.userPseudo;
 
         firebase.auth().createUserWithEmailAndPassword(this.userdata.email, this.userdata.password).then(function (res) {
+            var userID = firebase.auth().currentUser.uid;
+            firebase.database().ref('users/'+userID).once('value').then(function(snapshot) {
+                snapshot.ref.update({'nom': 'Leininger', 'prenom': 'Brandon', 'pseudo': 'brandonle'});
+                //this.commentsRef.push({'name': 'AnotherName19789809', message: 'Un commentaire1000987787. ', 'tweet_id':2});
+                //refUsers.push({'nom': 'Leininger', 'prenom': 'Brandon', 'pseudo': 'brandonle', 'tweet_id':2});
+            });
             firebase.auth().currentUser.updateProfile({
                 displayName: username,
                 photoURL: 'https://time2hack.com/favicon.png'

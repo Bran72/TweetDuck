@@ -30545,6 +30545,10 @@ ion-navbar.toolbar {
   background: #1d2938 !important;
 }
 
+.toolbar-background {
+  background: #1d2938 !important;
+}
+
 .tabbar .tab-button {
   background: #1d2938 !important;
 }
@@ -30680,10 +30684,15 @@ page-home .scroll-content .link_user {
 
 page-home .scroll-content .tweet_date {
   font-size: 1.2rem;
+  color: #8c8c8c !important;
 }
 
 page-home .scroll-content ion-avatar img {
   overflow: unset !important;
+}
+
+page-image-upload .tabbar {
+  display: none !important;
 }
 
 page-image-upload .tweetduck_logo {
@@ -30830,16 +30839,23 @@ page-intro .scroll-content ion-grid button {
   font-size: 1.8rem !important;
 }
 
+page-newtweet .bar-button-ios {
+  font-size: 3.5rem;
+  margin-left: 1.5rem;
+}
+
+page-newtweet .scroll-content {
+  /*.create_tweet{position: absolute; right: 2rem; bottom: 2rem;}*/
+}
+
 page-newtweet .scroll-content ion-textarea {
-  height: 8em;
+  height: 25em;
   overflow: scroll;
-  margin: -1em 0 1em 0;
   padding: 0 1em;
-  border: 1px solid #007aff;
 }
 
 page-newtweet .scroll-content ion-textarea textarea {
-  height: 6em !important;
+  height: 23em !important;
 }
 
 page-newtweet .scroll-content button {
@@ -30847,6 +30863,61 @@ page-newtweet .scroll-content button {
   padding: 0 2em !important;
   float: right;
   margin-right: 1rem;
+}
+
+page-newtweet .scroll-content .tweet_info, page-newtweet .scroll-content .tweet_info_user {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+page-newtweet .scroll-content .tweet_info_user {
+  margin: -3em 0 1em 5rem;
+}
+
+page-newtweet .scroll-content .tweet_info img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-left: 2rem;
+}
+
+page-newtweet .scroll-content .next_button {
+  position: fixed !important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 5.5rem;
+  bottom: 0;
+  background: #172232;
+  border-bottom: 1px solid #2b384b;
+  padding: .4rem 0 1.4rem 0;
+}
+
+page-newtweet .scroll-content .next_button .next_button-btn {
+  float: right;
+  height: 2.8rem !important;
+  margin-right: 2rem;
+  font-size: 1rem !important;
+  padding-left: 1.3rem !important;
+  padding-right: 1.3rem !important;
+}
+
+page-newtweet .scroll-content .add_pic_tweet {
+  margin-left: 2rem;
+  font-size: 2.2rem;
+  color: #488aff;
 }
 
 page-profile .background_profil {
@@ -30910,6 +30981,117 @@ page-profile .scroll-content ion-col span {
 page-profile .scroll-content .col_tweet {
   height: 3rem;
   color: #1DA1F2;
+}
+
+page-profile .scroll-content ion-card {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 1em !important;
+  background: #15202b !important;
+  border-top: 1px solid #38444d;
+}
+
+page-profile .scroll-content ion-card:last-child {
+  border-bottom: 1px solid #38444d;
+}
+
+page-profile .scroll-content ion-card > ion-item {
+  padding-left: 0 !important;
+  background: #15202b !important;
+}
+
+page-profile .scroll-content ion-card h2, page-profile .scroll-content ion-card p, page-profile .scroll-content ion-note {
+  color: white !important;
+}
+
+page-profile .scroll-content ion-card-content {
+  margin-top: -2.5em !important;
+  font-size: 1em;
+  position: relative;
+  z-index: 9;
+  padding-left: 3.75em;
+  padding-right: 0 !important;
+}
+
+page-profile .scroll-content ion-avatar {
+  margin-right: 6px !important;
+}
+
+page-profile .scroll-content ion-card > ion-item > .item-inner > .input-wrapper {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  padding-bottom: .5rem;
+  font-size: .65em !important;
+  height: 3em !important;
+}
+
+page-profile .scroll-content ion-datetime {
+  font-size: 1.2rem;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #617788 !important;
+}
+
+page-profile .scroll-content ion-datetime > button {
+  display: none !important;
+}
+
+page-profile .scroll-content .likes_comments_bar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  padding: 0 !important;
+}
+
+page-profile .scroll-content .tweet_info, page-profile .scroll-content .tweet_info_user {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+page-profile .scroll-content .tweet_info img {
+  width: 45px;
+  height: 45px;
+}
+
+page-profile .scroll-content .tweet_info_user {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-left: .5rem;
+}
+
+page-profile .scroll-content .user_tweet {
+  font-size: .8em;
+  width: 28rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+page-profile .scroll-content .link_user {
+  color: #8c8c8c;
+}
+
+page-profile .scroll-content .tweet_date {
+  font-size: 1.2rem;
+  color: #8c8c8c !important;
+}
+
+page-profile .scroll-content .exit {
+  position: absolute !important;
+  top: 5rem;
+  right: 2rem;
+  color: red !important;
 }
 
 page-signin .tweetduck_logo {

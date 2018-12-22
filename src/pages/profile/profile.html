@@ -10,16 +10,16 @@
   </ion-navbar>
 </ion-header>-->
 
-<ion-content padding>
+<ion-content padding >
   <img class="background_profil" src="../../assets/imgs/twitter_background.jpg" alt="User profil pic">
 
   <ion-grid>
     <ion-row>
       <ion-col class="user_info" col-lg-1>
         <img src="{{userImg}}" alt="User profil pic">
-        <h3>{{displayName}}</h3>
+        <h3>{{displayName}} <ion-icon class="exit" ios="ios-exit-outline" md="md-exit" (click)="logOut()"></ion-icon></h3>
         <p class="user_mail">@{{displayName}}</p>
-        <p class="user_crea">A rejoint TweetDuck le {{userCrea.creationTime | date: 'dd MMMM yyyy'}}</p>
+        <p class="user_crea"><ion-icon ios="ios-calendar" md="md-calendar">&nbsp;</ion-icon>A rejoint TweetDuck le {{userCrea.creationTime | date: 'dd MMMM yyyy'}}</p>
       </ion-col>
     </ion-row>
     <ion-row class="tweet_after">
@@ -29,13 +29,29 @@
     </ion-row>
   </ion-grid>
 
+  <ion-card *ngFor="let item of (tweetsByUser | async)?.slice().reverse()">
+    <ion-item>
+      <ion-avatar item-start>
+        <!--<h2>{{item.name}}</h2>-->
+        <span class="tweet_info">
+          <img style="display: inline-block" src="{{item.tweet_user_img}}">
+          <span class="tweet_info_user">
+            <p class="user_tweet"><b>{{item.tweet_user}}</b> <span class="link_user">@{{item.tweet_user}}</span></p>
+            <!--<ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>-->
+            <p class="tweet_date">{{item.date | date: 'dd/MM/yyyy à H:mm'}}</p>
+          </span>
+        </span>
+        <br><br>
+      </ion-avatar>
+    </ion-item>
 
-  <br>
-    <!--<ion-item *ngFor="let item of (items | async)?.slice().reverse()">
-        {{item.tweet_user}}
-    </ion-item>-->
+    <ion-card-content>
+      <p>{{item.tweet}}</p>
+    </ion-card-content>
+  </ion-card>
 
-  <button ion-button color="duckcoin" (click)="logOut()">Se déconnecter</button>
-<button ion-button color="duckcoin" (click)="imageProfil()">IMAGE</button>
-
+  <!--<ion-item *ngFor="let item of (items | async)?.slice().reverse()">
+      {{item.tweet_user}}
+  </ion-item>
+  <button ion-button color="duckcoin" (click)="logOut()">Se déconnecter</button>-->
 </ion-content>

@@ -31,7 +31,7 @@ export class ImageUploadPage {
         this.userID = this.user.uid;
     }
 
-    getImage(uid: String): void { //permet de sélectionner une image dans la galerie photo de son téléphone... mais il n'y a pour l'instant rien derrière
+    getImage(uid: String): void { //permet de sélectionner une image dans la galerie photo de son téléphone
         this.camera.getPicture({
             sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
             destinationType: this.camera.DestinationType.DATA_URL,

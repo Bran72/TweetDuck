@@ -1,7 +1,16 @@
 page-newtweet {
+  .bar-button-ios{font-size: 3.5rem; margin-left: 1.5rem}
   .scroll-content {
-    ion-textarea{height: 8em; overflow: scroll; margin: -1em 0 1em 0; padding: 0 1em; border: 1px solid #007aff}
-    ion-textarea textarea{height: 6em !important}
+    ion-textarea{height: 25em; overflow: scroll; padding: 0 1em;}
+    ion-textarea textarea{height: 23em !important}
     button{height: 2em !important; padding: 0 2em !important; float: right; margin-right: 1rem;}
+    .tweet_info, .tweet_info_user{display: flex}
+    .tweet_info_user{margin: -3em 0 1em 5rem;}
+    .tweet_info img{width: 35px; height: 35px; border-radius: 50%; margin-left: 2rem}
+    /*.create_tweet{position: absolute; right: 2rem; bottom: 2rem;}*/
+
+    .next_button{position: fixed !important; display: flex; justify-content: space-between; align-items: center; width: 100%; height: 5.5rem; bottom: 0; background: #172232; border-bottom: 1px solid #2b384b; padding: .4rem 0 1.4rem 0;}
+    .next_button .next_button-btn{float: right; height: 2.8rem !important; margin-right: 2rem; font-size: 1rem !important; padding-left: 1.3rem !important; padding-right: 1.3rem !important; }
+    .add_pic_tweet{margin-left: 2rem; font-size: 2.2rem; color: #488aff}
   }
 }

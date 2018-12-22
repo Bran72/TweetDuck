@@ -23,24 +23,55 @@ export class HomePage {
   items;
   tweetComments:any;
   displayName:any;
+  userID:any;
     constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams : NavParams, private afAuth: AngularFireAuth, db: AngularFireDatabase) {
-      //On s'assure et redirige l'utilisateur en fonction de son état, s'il est connecté ou non.
-      afAuth.authState.subscribe(user => {
+      afAuth.authState.subscribe(user => { //On s'assure et re-dirige l'utilisateur en fonction de son état, s'il est connecté ou non.
           if (!user) { //S'il n'est pas connecté, celui-ci est retourné sur la page Root
               this.navCtrl.setRoot(SigninPage);
               return;
           }
+          this.userID = firebase.auth().currentUser.uid;
+
           this.username = user.email;
           this.userimage = user.photoURL;
           this.displayName = user.displayName; //get the user's pseudo
           //this.commentsRef = db.list('comments');
 
-          this.items = db.list('tweets').valueChanges();
+          var users = db.list('users').valueChanges();
+          for(var useer in users){
+              console.log(useer);
+          }
+
+          //this.items = db.list(`tweets/${this.userID}`).valueChanges();
+          this.items = db.list('tweets/').valueChanges();
+
+
+          var useers = firebase.database().ref().child('users').child('uid');
+          var tweeets = firebase.database().ref().child('tweets');
+
+          tweeets.on('child_added', snap =>{
+              //console.log(snap.val());
+              useers.once('value', user=>{
+                 //console.log(user.val());
+              });
+          });
+
+          /*return firebase.database().ref('tweets/').once('value').then(function(snapshot) {
+              snapshot.forEach(function(childSnapshot) {
+                  childSnapshot.forEach(function(childSnapshot) {
+                      var items = childSnapshot.val();
+                  });
+              });
+          });*/
+
+          /*var refUsers = db.list('users');
+          //refUsers.push({'nom': 'Leininger', 'prenom': 'Brandon', 'pseudo': 'brandonle', 'tweet_id':2});
+          //refUsers.push({'name': 'AnotherName2', message: 'Un commentaire2. ', 'tweet_id':3});
 
           var ref = firebase.database().ref('tweets');
           ref.on("child_added", function (snapshot, childKey) {
               console.log(childKey);
-          });
+          });*/
 
           /*console.log(ref.child('tweet').key);
           ref.once('value').then(function(snapshot) {

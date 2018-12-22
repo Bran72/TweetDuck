@@ -33,6 +33,7 @@ export class ProfilePage {
     userCrea:any;
     userId:any;
     items;
+    tweetsByUser;
     src:any;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public modalCtrl:ModalController, public actionsheetCtrl:  ActionSheetController,
@@ -44,17 +45,21 @@ export class ProfilePage {
       this.userId = this.user.uid;
 
 
-        afAuth.authState.subscribe(user => {
-            if (!user) { //S'il n'est pas connecté, celui-ci est retourné sur la page Root
-                this.navCtrl.setRoot(SigninPage);
-                return;
-            }
-            //this.items = db.list('tweets').valueChanges();
-            this.items = firebase.database().ref('tweets/');
-            console.log(this.items);
-        });
+      afAuth.authState.subscribe(user => {
+          if (!user) { //S'il n'est pas connecté, celui-ci est retourné sur la page Root
+              this.navCtrl.setRoot(SigninPage);
+              return;
+          }
+          //this.items = db.list('tweets').valueChanges();
+          this.items = firebase.database().ref('tweets/');
+          //this.items = db.list(`tweets/${this.userID}`).valueChanges();
+          console.log(this.items);
+      });
 
-      //Pour récupérer une image dans le FireBase Storage
+      this.tweetsByUser = db.list('tweets_by_user/'+this.userId).valueChanges();
+
+
+        //Pour récupérer une image dans le FireBase Storage
       var storage = firebase.storage().ref('users/');
       var pathStorage;
       storage.child('user-.jpg').getDownloadURL().then(function(url){
