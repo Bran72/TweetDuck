@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { NavController, ModalController, NavParams} from 'ionic-angular';
 import { ModalPage } from '../../pages/modal/modal'; // la page modale est dans le même dossier que la principale
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import firebase, {database} from 'firebase/app';
 import {SigninPage} from "../signin/signin";
 import {TabsPage} from "../tabs/tabs";
 import { CommentPage } from '../comment/comment';
 import { LikePage } from '../like/like';
 import {NewtweetPage} from "../newtweet/newtweet";
+import { map} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'page-home',
@@ -19,8 +21,10 @@ export class HomePage {
   username = '';
   userimage:any;
   //commentsRef:any;
+  itemRef;
   date:any;
   items;
+  item;
   tweetComments:any;
   displayName:any;
   userID:any;
@@ -43,8 +47,12 @@ export class HomePage {
           }
 
           //this.items = db.list(`tweets/${this.userID}`).valueChanges();
-          this.items = db.list('tweets/').valueChanges();
-
+          // this.items = db.list('tweets/').valueChanges();
+          // console.log('this.items1', this.items);
+          this.itemRef = db.list('tweets')
+          this.items = this.itemRef.snapshotChanges()
+            .pipe(map(changes => {return changes.map(c => ({key: c.payload.key, ...c.payload.val()}))}))
+          console.log('this.items2', this.itemRef);
 
           var useers = firebase.database().ref().child('users').child('uid');
           var tweeets = firebase.database().ref().child('tweets');
@@ -92,8 +100,8 @@ export class HomePage {
  } //constructor end
 
     //Pour afficher la modal des Commentaires
-    presentComment(tweet) {
-        const modal = this.modalCtrl.create(CommentPage, {tweet: tweet});
+    presentComment(key) {
+        const modal = this.modalCtrl.create(CommentPage, {tweet: this.itemRef, key: key});
         modal.present();
     }
 

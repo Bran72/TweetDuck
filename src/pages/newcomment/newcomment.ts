@@ -20,31 +20,30 @@ export class NewcommentPage {
   commentData: any = {};
   comments: any;
   tweet: any;
-  tweetID: any;
-  userID: any;
+  tweetKey: any;
   date: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public db: AngularFireDatabase, private afAuth: AngularFireAuth) {
     this.tweet = navParams.get('tweet');
-    this.userID = firebase.auth().currentUser.uid;
-    this.tweetID =
-    console.log('tweetID', this.tweet)
+    this.tweetKey = navParams.get('key');
+    console.log('this.tweet', this.tweetKey)
   }
 
   createComment() {
     this.afAuth.authState.subscribe(user => {
-      var user_id = this.userID;
       if(this.commentData.content) {
-        this.comments = this.db.list("comments/");
         this.date = new Date().toISOString();
-        console.log('tweeeet', this.comments)
-        this.comments.push({
-            'name': user.displayName,
-            'message': this.commentData.content,
-            'date': this.date
-
-        });
-
+        // this.comments.push({
+        //     'name': user.displayName,
+        //     'message': this.commentData.content,
+        //     'date': this.date
+        //
+        // });
+        this.db.list('tweets/'+ this.tweetKey + '/comments').push({
+            user: user.displayName,
+            date: this.date,
+            comment: this.commentData.content
+        })
       }
       this.viewCtrl.dismiss();
     })

@@ -23,10 +23,10 @@
             <ion-avatar item-start>
                 <img src="../../assets/imgs/logo.png">
             </ion-avatar>
-            <h2>{{item.name}}</h2>
-            <p>{{item.message}}</p>
+            <h2>{{item.user}}</h2>
+            <p>{{item.comment}}</p>
           <p class="tweet_date">{{item.date | date: 'dd/MM/yyyy à H:mm'}}</p>
         </ion-item>
     </ion-list>
-    <ion-fab bottom right style="font-size: 18px;"><button (click)="presentAddComment(tweet)" style="font-size: 24px; background: blue">+</button></ion-fab>
+    <ion-fab bottom right style="font-size: 18px;"><button (click)="presentAddComment()" style="font-size: 24px; background: blue">+</button></ion-fab>
 </ion-content>

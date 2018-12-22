@@ -31,38 +31,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var CommentPage = /** @class */ (function () {
     function CommentPage(navCtrl, modalCtrl, navParams, viewCtrl, db) {
+        this.navCtrl = navCtrl;
+        this.modalCtrl = modalCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
         /*const items = [
             {'name': 'AnotherName1', message: 'Un commentaire1. '},
             {'name': 'AnotherName2', message: 'Un commentaire2.'},
             {'name': 'AnotherName3', message: 'Et pourquoi pas un commentaire3.'}
         ];*/
-        this.navCtrl = navCtrl;
-        this.modalCtrl = modalCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.commentsRef = db.list('comments');
-        this.items = db.list('comments').valueChanges();
+        this.tweetKey = navParams.get('key');
+        this.commentsRef = db.list('tweets/');
+        this.items = db.list('tweets/' + this.tweetKey + '/comments').valueChanges();
         this.tweet = navParams.get('tweet');
         console.log('cc la mifa', this.tweet);
+        console.log('tweetKey?', this.tweetKey);
         //this.commentsRef.push({'name': 'AnotherName19789809', message: 'Un commentaire1000987787. ', 'tweet_id':2});
         //this.commentsRef.push({'name': 'AnotherName2', message: 'Un commentaire2. ', 'tweet_id':3});
     }
     CommentPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad CommentPage');
     };
-    CommentPage.prototype.log = function (val) {
-        console.log(val, 'val');
-    };
     CommentPage.prototype.dismiss = function () {
         this.viewCtrl.dismiss();
     };
-    CommentPage.prototype.presentAddComment = function (tweet) {
-        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__newcomment_newcomment__["a" /* NewcommentPage */], { tweet: tweet });
+    CommentPage.prototype.presentAddComment = function () {
+        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__newcomment_newcomment__["a" /* NewcommentPage */], { tweet: this.tweet, key: this.tweetKey });
         modal.present();
     };
     CommentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-comment',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/'<!--\n  Generated template for the CommentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            Commentaires\n        </ion-title>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <ion-item *ngFor="let item of items | async">\n            <ion-avatar item-start>\n                <img src="../../assets/imgs/logo.png">\n            </ion-avatar>\n            <h2>{{item.name}}</h2>\n            <p>{{item.message}}</p>\n          <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n        </ion-item>\n    </ion-list>\n    <ion-fab bottom right style="font-size: 18px;"><button (click)="presentAddComment(tweet)" style="font-size: 24px; background: blue">+</button></ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/,
+            selector: 'page-comment',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/'<!--\n  Generated template for the CommentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            Commentaires\n        </ion-title>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <ion-item *ngFor="let item of items | async">\n            <ion-avatar item-start>\n                <img src="../../assets/imgs/logo.png">\n            </ion-avatar>\n            <h2>{{item.user}}</h2>\n            <p>{{item.comment}}</p>\n          <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n        </ion-item>\n    </ion-list>\n    <ion-fab bottom right style="font-size: 18px;"><button (click)="presentAddComment()" style="font-size: 24px; background: blue">+</button></ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/comment/comment.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object])
     ], CommentPage);
@@ -82,9 +81,7 @@ var CommentPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_firebase__ = __webpack_require__(144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__ = __webpack_require__(57);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -94,7 +91,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -114,22 +110,24 @@ var NewcommentPage = /** @class */ (function () {
         this.afAuth = afAuth;
         this.commentData = {};
         this.tweet = navParams.get('tweet');
-        this.userID = __WEBPACK_IMPORTED_MODULE_4_firebase__["auth"]().currentUser.uid;
-        this.tweetID =
-            console.log('tweetID', this.tweet);
+        this.tweetKey = navParams.get('key');
+        console.log('this.tweet', this.tweetKey);
     }
     NewcommentPage.prototype.createComment = function () {
         var _this = this;
         this.afAuth.authState.subscribe(function (user) {
-            var user_id = _this.userID;
             if (_this.commentData.content) {
-                _this.comments = _this.db.list("comments/");
                 _this.date = new Date().toISOString();
-                console.log('tweeeet', _this.comments);
-                _this.comments.push({
-                    'name': user.displayName,
-                    'message': _this.commentData.content,
-                    'date': _this.date
+                // this.comments.push({
+                //     'name': user.displayName,
+                //     'message': this.commentData.content,
+                //     'date': this.date
+                //
+                // });
+                _this.db.list('tweets/' + _this.tweetKey + '/comments').push({
+                    user: user.displayName,
+                    date: _this.date,
+                    comment: _this.commentData.content
                 });
             }
             _this.viewCtrl.dismiss();
@@ -217,7 +215,7 @@ var LikePage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewtweetPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_firebase__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_firebase__);
@@ -444,7 +442,7 @@ var NewtweetPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_fire_database__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__signin_signin__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__intro_intro__ = __webpack_require__(98);
@@ -595,7 +593,7 @@ var map = {
 		5
 	],
 	"../pages/newcomment/newcomment.module": [
-		531,
+		532,
 		4
 	],
 	"../pages/newtweet/newtweet.module": [
@@ -603,7 +601,7 @@ var map = {
 		3
 	],
 	"../pages/profile/profile.module": [
-		532,
+		531,
 		2
 	],
 	"../pages/signin/signin.module": [
@@ -631,14 +629,14 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 263:
+/***/ 264:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_firebase_app__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_firebase_app__);
@@ -646,6 +644,15 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__comment_comment__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__like_like__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__newtweet_newtweet__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators__ = __webpack_require__(28);
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -655,6 +662,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -687,7 +695,12 @@ var HomePage = /** @class */ (function () {
                 console.log(useer);
             }
             //this.items = db.list(`tweets/${this.userID}`).valueChanges();
-            _this.items = db.list('tweets/').valueChanges();
+            // this.items = db.list('tweets/').valueChanges();
+            // console.log('this.items1', this.items);
+            _this.itemRef = db.list('tweets');
+            _this.items = _this.itemRef.snapshotChanges()
+                .pipe(Object(__WEBPACK_IMPORTED_MODULE_9_rxjs_operators__["map"])(function (changes) { return changes.map(function (c) { return (__assign({ key: c.payload.key }, c.payload.val())); }); }));
+            console.log('this.items2', _this.itemRef);
             var useers = __WEBPACK_IMPORTED_MODULE_4_firebase_app___default.a.database().ref().child('users').child('uid');
             var tweeets = __WEBPACK_IMPORTED_MODULE_4_firebase_app___default.a.database().ref().child('tweets');
             tweeets.on('child_added', function (snap) {
@@ -728,8 +741,8 @@ var HomePage = /** @class */ (function () {
         });
     } //constructor end
     //Pour afficher la modal des Commentaires
-    HomePage.prototype.presentComment = function (tweet) {
-        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__comment_comment__["a" /* CommentPage */], { tweet: tweet });
+    HomePage.prototype.presentComment = function (key) {
+        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__comment_comment__["a" /* CommentPage */], { tweet: this.itemRef, key: key });
         modal.present();
     };
     //Pour afficher la modal des Likes
@@ -747,11 +760,12 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar color="twitter">\n    <ion-title>TweetDuck</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <!--<h2 class="username">{{username}}</h2>-->\n  <div class="add_tweet" (click)="presentAddTweet()"><ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon></div>\n\n  <!--<ion-card *ngFor="let item of tweetComments">\n    <p>{{item.tweet}}</p>\n  </ion-card>-->\n\n  <!--<hr style="background: white">-->\n  <ion-card *ngFor="let item of (items | async)?.slice().reverse()">\n    <ion-item>\n      <ion-avatar item-start>\n        <span class="tweet_info">\n          <img style="display: inline-block" src="{{item.tweet_user_img}}">\n          <span class="tweet_info_user">\n            <p class="user_tweet"><b>{{item.tweet_user}}</b> <span class="link_user">@{{item.tweet_user}}</span></p>\n            <!--<ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>-->\n            <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n          </span>\n        </span>\n        <br><br>\n      </ion-avatar>\n    </ion-item>\n\n    <ion-card-content>\n      <p>{{item.tweet}}</p>\n    </ion-card-content>\n\n    <ion-row>\n      <ion-col class="likes_comments_bar">\n        <button ion-button icon-start clear small>\n          <div class="likes_title" (click)="presentLike()">\n            <ion-icon name="thumbs-up"></ion-icon>12\n          </div>\n        </button>\n        <button ion-button icon-start clear small>\n          <div class="comments_title" (click)="presentComment(item)">\n            <ion-icon name="text"></ion-icon>4\n          </div>\n        </button>\n      </ion-col>\n    </ion-row>\n  </ion-card>\n</ion-content>\n\n<script>\n  console.log(\'TOO\');\n</script><script src="build/vendor.js"></script>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar color="twitter">\n    <ion-title>TweetDuck</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <!--<h2 class="username">{{username}}</h2>-->\n  <div class="add_tweet" (click)="presentAddTweet()"><ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon></div>\n\n  <!--<ion-card *ngFor="let item of tweetComments">\n    <p>{{item.tweet}}</p>\n  </ion-card>-->\n\n  <!--<hr style="background: white">-->\n  <ion-card *ngFor="let item of (items | async)?.slice().reverse()">\n    <ion-item>\n      <ion-avatar item-start>\n        <span class="tweet_info">\n          <img style="display: inline-block" src="{{item.tweet_user_img}}">\n          <span class="tweet_info_user">\n            <p class="user_tweet"><b>{{item.key}}</b> <span class="link_user">@{{item.tweet_user}}</span></p>\n            <!--<ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>-->\n            <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n          </span>\n        </span>\n        <br><br>\n      </ion-avatar>\n    </ion-item>\n\n    <ion-card-content>\n\n      <p>{{item.tweet}}</p>\n    </ion-card-content>\n\n    <ion-row>\n      <ion-col class="likes_comments_bar">\n        <button ion-button icon-start clear small>\n          <div class="likes_title" (click)="presentLike()">\n            <ion-icon name="thumbs-up"></ion-icon>12\n          </div>\n        </button>\n        <button ion-button icon-start clear small>\n          <div class="comments_title" (click)="presentComment(item.key)">\n            <ion-icon name="text"></ion-icon>4\n          </div>\n        </button>\n      </ion-col>\n    </ion-row>\n  </ion-card>\n</ion-content>\n\n<script>\n  console.log(\'TOO\');\n</script><script src="build/vendor.js"></script>\n'/*ion-inline-end:"/Users/nicolas/Desktop/Cours IUT/ionic/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d, _e;
 }()); //end export class HomePage
 
 /* CES LIGNES POUR CRÉER LA COLLECTION ('tweets' à la place de 'items') (Angulare FirestoreColleciton)
@@ -856,7 +870,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ionic_angular__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_app_component__ = __webpack_require__(522);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_intro_intro__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_home_home__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_home_home__ = __webpack_require__(264);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_profile_profile__ = __webpack_require__(171);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_login_login__ = __webpack_require__(307);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_modal_modal__ = __webpack_require__(523);
@@ -875,7 +889,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_camera__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__angular_fire__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_fire_database__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_fire_auth__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_fire_auth__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_firebase_app__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_29_firebase_app__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -962,8 +976,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/intro/intro.module#IntroPageModule', name: 'IntroPage', segment: 'intro', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/like/like.module#LikePageModule', name: 'LikePage', segment: 'like', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/newcomment/newcomment.module#NewcommentPageModule', name: 'NewcommentPage', segment: 'newcomment', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/newcomment/newcomment.module#NewcommentPageModule', name: 'NewcommentPage', segment: 'newcomment', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signin/signin.module#SigninPageModule', name: 'SigninPage', segment: 'signin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/newtweet/newtweet.module#NewtweetPageModule', name: 'NewtweetPage', segment: 'newtweet', priority: 'low', defaultHistory: [] }
@@ -1046,7 +1060,7 @@ var ComponentsModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_home__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_home__ = __webpack_require__(264);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_profile__ = __webpack_require__(171);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1268,7 +1282,7 @@ var PipesModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(306);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_intro_intro__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_fire_auth__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_fire_auth__ = __webpack_require__(57);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
