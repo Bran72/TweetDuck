@@ -9,6 +9,7 @@ import { SigninPage } from "../signin/signin";
 import { IntroPage } from "../intro/intro";
 import { ImageUploadPage } from '../image-upload/image-upload';
 import { TabsPage } from "../tabs/tabs";
+import {UserImagePage} from "../user-image/user-image";
 
 /**
  * Generated class for the ProfilePage page.
@@ -99,7 +100,9 @@ export class ProfilePage {
   }
 
   imageProfil(){
-      this.navCtrl.setRoot(ImageUploadPage);
+      const modal = this.modalCtrl.create(UserImagePage);
+      modal.present();
+      //this.navCtrl.push(UserImagePage);
   }
 
   ionViewDidLoad() {

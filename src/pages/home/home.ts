@@ -37,12 +37,15 @@ export class HomePage {
           this.displayName = user.displayName; //get the user's pseudo
           //this.commentsRef = db.list('comments');
 
-          var users = db.list('users').valueChanges();
+          var users = db.list('users/'+this.userID).valueChanges();
           for(var useer in users){
-              console.log(useer);
+              //console.log('YOOYOYOYOYOOYOYOYOYYOOYYOYYO');
+              console.log(useer.valueOf());
           }
 
           //this.items = db.list(`tweets/${this.userID}`).valueChanges();
+          var useeer = db.list(`tweets/${this.userID}`);
+
           this.items = db.list('tweets/').valueChanges();
 
 

@@ -31237,3 +31237,109 @@ page-signup .scroll-content .avatar {
   width: 6em;
   height: 6em;
 }
+
+page-user-image .tabbar {
+  display: none !important;
+}
+
+page-user-image .tweetduck_logo {
+  width: 4rem !important;
+  margin: auto !important;
+}
+
+page-user-image .toolbar-background {
+  background: #172232 !important;
+  border-bottom: unset !important;
+}
+
+page-user-image .toolbar-title {
+  text-align: center;
+}
+
+page-user-image .scroll-content {
+  padding: 5rem 2rem 5rem 2rem !important;
+}
+
+page-user-image .scroll-content h2 {
+  font-size: 2.2rem !important;
+  text-align: left !important;
+}
+
+page-user-image .scroll-content .next_button {
+  position: fixed !important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  bottom: 0;
+  margin-left: -2rem;
+  background: #172232;
+  border-bottom: 1px solid #2b384b;
+  padding: .4rem 0 1.4rem 0;
+}
+
+page-user-image .scroll-content .next_button a {
+  margin-left: 2rem;
+}
+
+page-user-image .scroll-content .next_button .next_button-btn {
+  float: right;
+  margin-right: 2rem;
+  font-size: 1rem !important;
+  padding-left: 1.3rem !important;
+  padding-right: 1.3rem !important;
+}
+
+page-user-image .scroll-content .item-input {
+  background: unset !important;
+  color: white !important;
+}
+
+page-user-image .scroll-content input {
+  font-size: 1.4rem !important;
+}
+
+page-user-image .scroll-content .choose_profilpic {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+page-user-image .scroll-content ion-row {
+  margin-top: 2rem;
+}
+
+page-user-image .scroll-content ion-item.item {
+  padding-left: 0 !important;
+}
+
+page-user-image .scroll-content ion-item .item-inner {
+  margin-top: 2rem !important;
+}
+
+page-user-image .scroll-content .userPic {
+  background: #15202b !important;
+}
+
+page-user-image .scroll-content .userPic .item-inner {
+  border: unset !important;
+  margin-top: 0 !important;
+}
+
+page-user-image .scroll-content .avatar {
+  width: 7.5em;
+  height: 7.5em;
+  border: .7rem solid #172D3D;
+}
+
+page-user-image .scroll-content .tabbar {
+  display: none !important;
+}

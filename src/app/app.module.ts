@@ -17,6 +17,7 @@ import { NewtweetPage } from '../pages/newtweet/newtweet';
 import { LikePage } from '../pages/like/like';
 import { CommentPage } from '../pages/comment/comment';
 import { ImageUploadPage } from '../pages/image-upload/image-upload';
+import { UserImagePage } from '../pages/user-image/user-image';
 
 import { SigninPage } from "../pages/signin/signin";
 import { SignupPage } from "../pages/signup/signup";
@@ -63,6 +64,7 @@ firebase.initializeApp(firebaseConfig);
     LikePage,
     NewtweetPage,
     ImageUploadPage,
+    UserImagePage,
     TabsPage
   ],
   imports: [
@@ -93,6 +95,7 @@ firebase.initializeApp(firebaseConfig);
     LikePage,
     TabsPage,
     ImageUploadPage,
+    UserImagePage,
     NewtweetPage
   ],
   providers: [

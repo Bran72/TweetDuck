@@ -87,7 +87,7 @@ export class SignupPage {
         firebase.auth().createUserWithEmailAndPassword(this.userdata.email, this.userdata.password).then(function (res) {
             var userID = firebase.auth().currentUser.uid;
             firebase.database().ref('users/'+userID).once('value').then(function(snapshot) {
-                snapshot.ref.update({'nom': 'Leininger', 'prenom': 'Brandon', 'pseudo': 'brandonle'});
+                snapshot.ref.update({'pseudo': username.replace(/\s/g, "").toLowerCase()});
                 //this.commentsRef.push({'name': 'AnotherName19789809', message: 'Un commentaire1000987787. ', 'tweet_id':2});
                 //refUsers.push({'nom': 'Leininger', 'prenom': 'Brandon', 'pseudo': 'brandonle', 'tweet_id':2});
             });

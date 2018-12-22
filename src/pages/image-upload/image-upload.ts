@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, LoadingController} from 'ionic-angular';
 import firebase from 'firebase/app';
 
 import {TabsPage} from "../tabs/tabs";
@@ -27,7 +27,7 @@ export class ImageUploadPage {
     imgPreview: any = 'https://time2hack.com/favicon.png';
     userPhoto: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public loadingCtrl: LoadingController) {
         this.userID = this.user.uid;
     }
 
@@ -36,6 +36,9 @@ export class ImageUploadPage {
             sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
             destinationType: this.camera.DestinationType.DATA_URL,
             quality: 40,
+            allowEdit: true,
+            targetWidth: 250,
+            targetHeight: 250,
             encodingType: this.camera.EncodingType.JPEG,
         }).then((imageData) => {
             this.base64Image = 'data:image/jpeg;base64,' + imageData;
@@ -55,6 +58,14 @@ export class ImageUploadPage {
     uploadImage() {
         let username = this.user.displayName;
         var storage = firebase.storage().ref('users/');
+
+        let loading = this.loadingCtrl.create({
+            spinner: 'crescent',
+            content: 'Patientez un instant...',
+            duration: 2500
+        });
+        loading.present();
+
         //this.userid = this.user.uid;
 
         storage.child('user-' + this.userID + '.jpg').putString(this.userPhoto, 'base64', {contentType: 'image/jpg'})

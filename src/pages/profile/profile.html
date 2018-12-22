@@ -16,7 +16,7 @@
   <ion-grid>
     <ion-row>
       <ion-col class="user_info" col-lg-1>
-        <img src="{{userImg}}" alt="User profil pic">
+        <img src="{{userImg}}" alt="User profil pic" (click)="imageProfil()">
         <h3>{{displayName}} <ion-icon class="exit" ios="ios-exit-outline" md="md-exit" (click)="logOut()"></ion-icon></h3>
         <p class="user_mail">@{{displayName}}</p>
         <p class="user_crea"><ion-icon ios="ios-calendar" md="md-calendar">&nbsp;</ion-icon>A rejoint TweetDuck le {{userCrea.creationTime | date: 'dd MMMM yyyy'}}</p>
