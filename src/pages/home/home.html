@@ -36,13 +36,13 @@
     <ion-row>
       <ion-col class="likes_comments_bar">
         <button ion-button icon-start clear small>
-          <div class="likes_title" (click)="presentLike()">
+          <div class="likes_title" (click)="presentLike(item.key)">
             <ion-icon name="thumbs-up"></ion-icon>12
           </div>
         </button>
         <button ion-button icon-start clear small>
           <div class="comments_title" (click)="presentComment(item.key)">
-            <ion-icon name="text"></ion-icon>4
+            <ion-icon name="text"></ion-icon>{{item.comments ? countObj(item.comments) : 0}}
           </div>
         </button>
       </ion-col>

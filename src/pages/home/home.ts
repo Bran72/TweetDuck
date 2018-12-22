@@ -46,9 +46,7 @@ export class HomePage {
               console.log(useer);
           }
 
-          //this.items = db.list(`tweets/${this.userID}`).valueChanges();
-          // this.items = db.list('tweets/').valueChanges();
-          // console.log('this.items1', this.items);
+
           this.itemRef = db.list('tweets')
           this.items = this.itemRef.snapshotChanges()
             .pipe(map(changes => {return changes.map(c => ({key: c.payload.key, ...c.payload.val()}))}))
@@ -105,9 +103,17 @@ export class HomePage {
         modal.present();
     }
 
+    log(val) {
+      console.log('val', val);
+    }
+
+    countObj(obj) {
+      return Object.keys(obj).length;
+    }
+
     //Pour afficher la modal des Likes
-    presentLike() {
-        const modal = this.modalCtrl.create(LikePage);
+    presentLike(key) {
+        const modal = this.modalCtrl.create(LikePage, {tweet: this.itemRef, key: key});
         modal.present();
     }
 
