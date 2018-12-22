@@ -35,7 +35,7 @@ export class ImageUploadPage {
         this.camera.getPicture({
             sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
             destinationType: this.camera.DestinationType.DATA_URL,
-            quality: 100,
+            quality: 40,
             encodingType: this.camera.EncodingType.JPEG,
         }).then((imageData) => {
             this.base64Image = 'data:image/jpeg;base64,' + imageData;

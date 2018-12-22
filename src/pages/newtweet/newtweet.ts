@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ViewController, AlertController} from 'ionic-angular';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
 import * as firebase from "firebase";
@@ -33,7 +33,7 @@ export class NewtweetPage {
     tweetPhotoUrl:any;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private afAuth: AngularFireAuth,
-                public camera: Camera, public db: AngularFireDatabase) {
+                public camera: Camera, public db: AngularFireDatabase, private alertCtrl: AlertController) {
         this.userID = firebase.auth().currentUser.uid;
         this.userImg = firebase.auth().currentUser.photoURL;
     }
@@ -95,23 +95,38 @@ export class NewtweetPage {
 
 
                 if (this.tweetPhoto != '') {
-                    this.date = new Date().toISOString();
+                    /*this.date = new Date().toISOString();
 
                     var storage = firebase.storage().ref().child('tweets/toto.jpg');
-                    var upload = storage.put(this.tweetPhoto);
-                    //upload.then(this.onSuccess, this.onError);
-                    upload.then((snapshot)=>{
-                        this.tweetPhotoUrl = snapshot.downloadURL;
-                    });
+                    var upload = storage.put(this.tweetPhoto).then(snapshot=>{
+                        var test = snapshot.downloadURL;
 
-                    setTimeout(()=>{
-                    this.db.list('tweets/').push({
+                        let alert = this.alertCtrl.create({
+                            title: 'Snapshot',
+                            subTitle: test,
+                            buttons: ['Dismiss']
+                        });
+                        alert.present();
+                    });*/
+
+
+
+                    //upload.then(this.onSuccess, this.onError);
+
+
+                    //setTimeout(()=>{
+                    /*this.db.list('tweets/').push({
                         'tweet_user_id': user.uid,
                         'tweet_user_img': user.photoURL,
                         'tweet_user': user.displayName,
                         'tweet': this.tweetData.content,
-                        'tweet_photo':this.tweetPhotoUrl,
-                        'date': this.date})}, 5000)
+                        'tweet_photo':'',
+                        'date': this.date})*/
+                    //}, 5000)
+
+
+
+
                     //let tweet_1 = this.tweets.getKey();
 
                     //this.tweets = this.db.list('tweets/');

@@ -95,7 +95,7 @@ export class ProfilePage {
           const modal = this.modalCtrl.create(IntroPage);
           modal.present();
           //this.navCtrl.push(IntroPage);
-      }, 1000);
+      }, 500);
   }
 
   imageProfil(){
