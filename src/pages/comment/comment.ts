@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import { AngularFireDatabase } from '@angular/fire/database';
-import {el} from "@angular/platform-browser/testing/src/browser_util";
+//import {el} from "@angular/platform-browser/testing/src/browser_util";
 /**
  * Generated class for the CommentPage page.
  *

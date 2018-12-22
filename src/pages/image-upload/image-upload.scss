@@ -1,0 +1,31 @@
+page-image-upload {
+  .tabbar{display: none !important;}
+  .tweetduck_logo{width: 4rem !important; margin: auto !important}
+  .toolbar-background{background: #172232 !important; border-bottom: unset !important;}
+  .toolbar-title{text-align: center}
+
+  .scroll-content{
+    padding: 5rem 2rem 5rem 2rem !important;
+
+    h2{font-size: 2.2rem !important; text-align: left !important;}
+    .next_button{position: fixed !important; display: flex; justify-content: space-between; align-items: center; width: 100%; bottom: 0; margin-left: -2rem; background: #172232; border-bottom: 1px solid #2b384b; padding: .4rem 0 1.4rem 0;}
+    .next_button a{margin-left: 2rem;}
+    .next_button .next_button-btn{float: right; margin-right: 2rem; font-size: 1rem !important; padding-left: 1.3rem !important; padding-right: 1.3rem !important; }
+
+    .item-input{background: unset !important; color: white !important}
+    input{font-size: 1.4rem !important;}
+
+    .choose_profilpic{margin-top: 0; font-size: 1.2rem;}
+
+    ion-row{margin-top: 2rem;}
+    ion-item.item{padding-left: 0 !important;}
+    ion-item .item-inner{margin-top: 2rem !important;}
+
+
+
+    .userPic{background: #15202b !important;}
+    .userPic .item-inner{border: unset !important; margin-top: 0 !important}
+    .avatar{width: 7.5em; height: 7.5em; border: .7rem solid #172D3D;}
+  }
+
+}

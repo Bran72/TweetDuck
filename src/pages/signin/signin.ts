@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import { AngularFireDatabase } from '@angular/fire/database';
 
 import firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
 import { TabsPage } from "../tabs/tabs";
-
 import { SignupPage } from "../signup/signup";
 
 /**
@@ -27,9 +26,9 @@ export class SigninPage {
     userdata:any = {};
     error ='';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
               afDB: AngularFireDatabase) {
-      //his.items = afDB.list('users').valueChanges();
+      //this.items = afDB.list('users').valueChanges();
   }
 
   gotoHome() {
@@ -49,6 +48,10 @@ export class SigninPage {
               self.error = error.message;
               // ...
           });
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 
   gotoSignUp(){

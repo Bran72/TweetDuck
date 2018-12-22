@@ -6,12 +6,9 @@
 -->
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Créer un Dweet
-    </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>
+        <span ion-text color="primary" showWhen="ios"><ion-icon name="close"></ion-icon></span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
@@ -19,8 +16,19 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-textarea placeholder="Dweecker quelque chose..." [(ngModel)]="tweetData.content"></ion-textarea>
-  <button ion-button round (click)="createTweet()">
-    <span ion-text>Tweeter</span>
-  </button>
+  <span class="tweet_info">
+    <img style="display: inline-block" src="{{userImg}}">
+  </span>
+  <span class="tweet_info_user">
+    <ion-textarea placeholder="Dweecker quelque chose..." [(ngModel)]="tweetData.content"></ion-textarea>
+  </span>
+
+  <img src="javascript:void(0)" alt="" id="tweet_image">
+
+  <div class="next_button">
+    <ion-icon class="add_pic_tweet" ios="ios-image" md="md-image" (click)="getImage()"></ion-icon>
+    <button ion-button round (click)="createTweet()" class="create_tweet next_button-btn">
+      <span ion-text>Tweeter</span>
+    </button>
+  </div>
 </ion-content>

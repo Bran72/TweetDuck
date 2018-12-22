@@ -1,44 +1,37 @@
 <ion-header>
-  <ion-navbar color="duckcoin">
-    <ion-title>S'inscrire</ion-title>
+  <ion-navbar>
+    <ion-title>
+      <img class="tweetduck_logo" src="../../assets/imgs/tweetduck.png" alt="TweetDuck logo">
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2 text-center>La monnaie solidaire</h2>
+  <ion-grid></ion-grid>
+  <h2 text-center><b>Créer votre compte</b></h2>
 
-  <ion-item>
-    <ion-label stacked>Choisir une image de profil</ion-label>
-    <ion-input type="file" accept="*" [(ngModel)]="userImage"></ion-input>
-  </ion-item>
+  <ion-row>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="userPseudo" placeholder="Nom et prénom"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label stacked>Pseudo</ion-label>
-    <ion-input type="text" [(ngModel)]="userPseudo"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-input type="email" [(ngModel)]="userdata.email" placeholder="Adresse email"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label stacked>Adresse email</ion-label>
-    <ion-input type="email" [(ngModel)]="userdata.email"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="userdata.password" placeholder="Mot de passe"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label stacked>Mot de passe</ion-label>
-    <ion-input type="password" [(ngModel)]="userdata.password"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label stacked>Répéter le mot de passe</ion-label>
-    <ion-input type="password" [(ngModel)]="userdata.password"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="userdata.password" placeholder="Répéter le mot de passe"></ion-input>
+    </ion-item>
+  </ion-row>
 
   <br>
   {{error}}
 
-  <button ion-button block (click)="signUp()">S'inscrire</button>
-
-  <br>OU<br>
-
-  <button ion-button block color="duckcoin" (click)="gotoSignIn()">Se connecter</button>
-
+  <div class="next_button">
+    <button class="next_button-btn" ion-button round (click)="signUp()">Suivant</button>
+  </div>
 </ion-content>

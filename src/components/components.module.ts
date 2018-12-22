@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from "ionic-angular";
-import { TransactionComponent } from './transaction/transaction';
 @NgModule({
-	declarations: [TransactionComponent],
+	declarations: [],
 	imports: [IonicModule],
-	exports: [TransactionComponent]
+	exports: []
 })
 export class ComponentsModule {}

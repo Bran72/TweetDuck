@@ -7,20 +7,29 @@ import { PipesModule } from '../pipes/pipes.module';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from '../app/app.component';
 
+import { IntroPage } from '../pages/intro/intro';
 import { HomePage } from '../pages/home/home';
 import { ProfilePage } from "../pages/profile/profile";
 import { LoginPage } from "../pages/login/login";
 import { ModalPage } from '../pages/modal/modal';
 import { TabsPage } from '../pages/tabs/tabs';
-import { CommentPage } from '../pages/comment/comment';
 import { NewtweetPage } from '../pages/newtweet/newtweet';
 import { LikePage } from '../pages/like/like';
+import { CommentPage } from '../pages/comment/comment';
+import { ImageUploadPage } from '../pages/image-upload/image-upload';
 
 import { SigninPage } from "../pages/signin/signin";
 import { SignupPage } from "../pages/signup/signup";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Base64 } from '@ionic-native/base64';
+
+import { Camera } from '@ionic-native/camera';
+
+
 
 //import { TransactionComponent } from '../components/transaction/transaction';
 
@@ -43,6 +52,7 @@ firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     MyApp,
+    IntroPage,
     HomePage,
     ProfilePage,
     LoginPage,
@@ -52,6 +62,7 @@ firebase.initializeApp(firebaseConfig);
     CommentPage,
     LikePage,
     NewtweetPage,
+    ImageUploadPage,
     TabsPage
   ],
   imports: [
@@ -71,6 +82,7 @@ firebase.initializeApp(firebaseConfig);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    IntroPage,
     HomePage,
     ModalPage,
     ProfilePage,
@@ -80,13 +92,17 @@ firebase.initializeApp(firebaseConfig);
     CommentPage,
     LikePage,
     TabsPage,
+    ImageUploadPage,
     NewtweetPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+      ImagePicker,
+      Base64,
+      Camera
   ]
 })
 export class AppModule {}
