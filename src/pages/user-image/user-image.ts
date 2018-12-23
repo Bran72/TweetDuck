@@ -84,9 +84,6 @@ export class UserImagePage {
                 pet.innerHTML += property + ': ' + err[property] + '; <br>';
             }
         });
-
-        //this.navCtrl.setRoot(TabsPage);
-        //this.navCtrl.setRoot(HomePage);
     }
 
     addUserProfil() {

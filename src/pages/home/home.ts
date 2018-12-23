@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {NavController, ModalController, NavParams} from 'ionic-angular';
-import {ModalPage} from '../../pages/modal/modal'; // la page modale est dans le même dossier que la principale
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
 import firebase, {database} from 'firebase/app';
@@ -61,38 +60,6 @@ export class HomePage {
                     //console.log(user.val());
                 });
             });
-
-            /*return firebase.database().ref('tweets/').once('value').then(function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
-                    childSnapshot.forEach(function(childSnapshot) {
-                        var items = childSnapshot.val();
-                    });
-                });
-            });*/
-
-            /*var refUsers = db.list('users');
-            //refUsers.push({'nom': 'Leininger', 'prenom': 'Brandon', 'pseudo': 'brandonle', 'tweet_id':2});
-            //refUsers.push({'name': 'AnotherName2', message: 'Un commentaire2. ', 'tweet_id':3});
-
-            var ref = firebase.database().ref('tweets');
-            ref.on("child_added", function (snapshot, childKey) {
-                console.log(childKey);
-            });*/
-
-            /*console.log(ref.child('tweet').key);
-            ref.once('value').then(function(snapshot) {
-                var numchildren = snapshot.numChildren();
-                var key = snapshot.val();
-                var childKey = snapshot.child("tweet").key;
-                //console.log(numchildren);
-                console.log(key);
-                console.log(key.name);
-                //console.log(childKey);
-            });*/
-            //console.log(db.list('tweets').valueChanges());
-            //this.tweetComments = db.list('tweets').valueChanges();
-            //console.log(this.items = db.list('tweets').valueChanges());
-            //console.log(this.commentsRef = db.list('tweets'));
         });
 
     } //constructor end

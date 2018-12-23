@@ -67,33 +67,10 @@ export class NewtweetPage {
         return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
     };
 
-
     createTweet() {
         this.afAuth.authState.subscribe(user => {
             var user_id = this.userID;
             if (this.tweetData.content) {
-                /*
-                //this.newTweet = this.db.list('tweets');
-                //this.date = new Date().toISOString();
-                //console.log(user.displayName);
-                //this.newTweet.push({'tweet_user_id':user.uid, 'tweet_user_img':user.photoURL, 'tweet_user':user.displayName, 'tweet': this.tweetData.content, 'date':this.date});
-
-                /*var tweetPush = this.newTweet.push({'tweet_user_id':user.uid, 'tweet_user_img':user.photoURL, 'tweet_user':user.displayName, 'tweet': this.tweetData.content, 'date':this.date});
-                var tweetID = tweetPush.key;
-                console.log(tweetID);*/
-                /*ref.on("value", function (snapshot) {
-                    console.log('snapshot !!!!!!!!!!!!!!! ');
-                    console.log(snapshot);
-                });*/
-                //this.viewCtrl.dismiss();
-                /*this.tweets = this.db.list('tweets/'+user_id);
-                this.date = new Date().toISOString();
-                this.tweets.push({'content': this.tweetData.content, 'tweet_date': this.date});*/
-                /*firebase.database().ref('tweets/'+user_id).once('value').then(function(snapshot) {
-                    snapshot.ref.update({'content': tweet_content, 'prenom': 'Brandon', 'pseudo': 'brandonle'});
-                });*/
-
-
                 if (this.tweetPhoto != '') {
                     /*this.date = new Date().toISOString();
 
@@ -180,18 +157,6 @@ export class NewtweetPage {
     dismiss() {
         this.viewCtrl.dismiss();
     }
-
-  /*  onSuccess = snapshot => {
-        this.tweetPhotoUrl = snapshot.getDownloadURL();
-        console.log('I think IT WORKKKKSSSSSS I THINK I THINK MAYBE')
-    };
-
-    onError = error => {
-        this.tweetPhotoUrl = 'error';
-
-        console.log(error);
-    };
-*/
 
     uploadImage() {
         let username = this.user.displayName;

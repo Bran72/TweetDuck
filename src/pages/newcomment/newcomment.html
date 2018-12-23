@@ -5,26 +5,22 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Répondre à ce Dweet
-    </ion-title>
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>
-        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Répondre à ce Dweet
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>
+                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <!--<ion-textarea placeholder="Dweecker quelque chose..." [(ngModel)]="tweetData.content"></ion-textarea>-->
-  <ion-textarea placeholder="Dweeter votre réponse." [(ngModel)]="commentData.content"></ion-textarea>
-  <button ion-button round (click)="createComment()" class="create_tweet next_button-btn">
-    <span ion-text>Répondre</span>
-  </button>
-<!--  <button ion-button round (click)="createTweet()">
-    <span ion-text>Tweeter</span>
-  </button>-->
+    <ion-textarea placeholder="Dweeter votre réponse." [(ngModel)]="commentData.content"></ion-textarea>
+    <button ion-button round (click)="createComment()" class="create_tweet next_button-btn">
+        <span ion-text>Répondre</span>
+    </button>
 </ion-content>

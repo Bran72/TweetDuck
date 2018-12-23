@@ -48,22 +48,18 @@ export class ProfilePage {
 
 
         afAuth.authState.subscribe(user => {
-            if (!user) { //S'il n'est pas connecté, celui-ci est retourné sur la page Root
+            if (!user) { // S'il n'est pas connecté, celui-ci est retourné sur la page Root
                 this.navCtrl.setRoot(SigninPage);
                 return;
             }
-            //this.items = db.list('tweets').valueChanges();
             this.items = firebase.database().ref('tweets/');
-            //this.items = db.list(`tweets/${this.userID}`).valueChanges();
-            console.log(this.items);
+            //console.log(this.items);
         });
 
-        //this.tweetsByUser = db.list('tweets_by_user/'+this.userId).valueChanges();
         this.tweetsByUser = db.list('tweets_by_user/' + this.userId).snapshotChanges()
             .pipe(map(changes => {
                 return changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
             }));
-
 
         //Pour récupérer une image dans le FireBase Storage
         var storage = firebase.storage().ref('users/');

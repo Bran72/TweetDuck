@@ -42,11 +42,11 @@ export class SignupPage {
                 'maintenant choisir une image de profil et découvrir le monde en temps réel.',
             buttons: [
                 {
-                text: 'OK',
-                handler: () => {
-                    this.showImageChooseModal()
-                }
-            }]
+                    text: 'OK',
+                    handler: () => {
+                        this.showImageChooseModal()
+                    }
+                }]
         });
         alert.present();
     }
@@ -86,10 +86,8 @@ export class SignupPage {
 
         firebase.auth().createUserWithEmailAndPassword(this.userdata.email, this.userdata.password).then(function (res) {
             var userID = firebase.auth().currentUser.uid;
-            firebase.database().ref('users/'+userID).once('value').then(function(snapshot) {
+            firebase.database().ref('users/' + userID).once('value').then(function (snapshot) {
                 snapshot.ref.update({'pseudo': username.replace(/\s/g, "").toLowerCase()});
-                //this.commentsRef.push({'name': 'AnotherName19789809', message: 'Un commentaire1000987787. ', 'tweet_id':2});
-                //refUsers.push({'nom': 'Leininger', 'prenom': 'Brandon', 'pseudo': 'brandonle', 'tweet_id':2});
             });
             firebase.auth().currentUser.updateProfile({
                 displayName: username,
@@ -103,7 +101,7 @@ export class SignupPage {
         this.presentAlert();
     }
 
-    showImageChooseModal(){
+    showImageChooseModal() {
         const modal = this.modalCtrl.create(ImageUploadPage);
         modal.present();
     }

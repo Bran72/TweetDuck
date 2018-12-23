@@ -1,58 +1,51 @@
 <ion-header>
-  <ion-navbar color="twitter">
-    <ion-title>TweetDuck</ion-title>
-  </ion-navbar>
+    <ion-navbar color="twitter">
+        <ion-title>TweetDuck</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <!--<h2 class="username">{{username}}</h2>-->
-
-  <!--<ion-card *ngFor="let item of tweetComments">
-    <p>{{item.tweet}}</p>
-  </ion-card>-->
-
-  <!--<hr style="background: white">-->
-  <ion-card *ngFor="let item of (items | async)?.slice().reverse()">
-    <ion-item>
-      <ion-avatar item-start>
-        <!--<h2>{{item.name}}</h2>-->
+    <ion-card *ngFor="let item of (items | async)?.slice().reverse()">
+        <ion-item>
+            <ion-avatar item-start>
         <span class="tweet_info">
           <img style="display: inline-block" src="{{item.tweet_user_img}}">
           <span class="tweet_info_user">
             <p class="user_tweet"><b>{{item.tweet_user}}</b> <span class="link_user">@{{item.tweet_user}}</span></p>
-            <!--<ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>-->
             <p class="tweet_date">{{item.date | date: 'dd/MM/yyyy à H:mm'}}</p>
           </span>
         </span>
-        <br><br>
-      </ion-avatar>
-    </ion-item>
+                <br><br>
+            </ion-avatar>
+        </ion-item>
 
-    <ion-card-content>
-      <p>{{item.tweet}}</p>
-    </ion-card-content>
+        <ion-card-content>
+            <p>{{item.tweet}}</p>
+        </ion-card-content>
 
-    <ion-row>
-      <ion-col class="likes_comments_bar">
-        <button ion-button icon-start clear small>
-          <div class="comments_title" (click)="presentComment(item.key)">
-            <ion-icon ios="ios-text-outline" md="md-text"></ion-icon><span class="icon_number">{{item.comments ? countObj(item.comments) : ''}}</span>
-          </div>
-        </button>
-        <button ion-button icon-start clear small>
-          <div class="likes_title" (click)="presentLike(item.key)">
-            <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon><span class="icon_number">{{item.likes ? countObj(item.likes) : ''}}</span>
-          </div>
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+        <ion-row>
+            <ion-col class="likes_comments_bar">
+                <button ion-button icon-start clear small>
+                    <div class="comments_title" (click)="presentComment(item.key)">
+                        <ion-icon ios="ios-text-outline" md="md-text"></ion-icon>
+                        <span class="icon_number">{{item.comments ? countObj(item.comments) : ''}}</span>
+                    </div>
+                </button>
+                <button ion-button icon-start clear small>
+                    <div class="likes_title" (click)="presentLike(item.key)">
+                        <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>
+                        <span class="icon_number">{{item.likes ? countObj(item.likes) : ''}}</span>
+                    </div>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
 </ion-content>
 
 <ion-footer>
-  <div class="add_tweet" (click)="presentAddTweet()"><ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon></div>
+    <div class="add_tweet" (click)="presentAddTweet()">
+        <ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    </div>
 </ion-footer>
 
-<script>
-  console.log('TOO');
-</script><script src="build/vendor.js"></script>
+<script src="build/vendor.js"></script>

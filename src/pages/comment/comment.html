@@ -45,22 +45,5 @@
         <button ion-button round (click)="createComment()" class="create_tweet next_button-btn">
             <span ion-text>Répondre</span>
         </button>
-        <!--<ion-icon class="next_button-btn" (click)="presentAddComment()" ios="ios-text" md="md-text"></ion-icon>-->
     </div>
 </ion-footer>
-
-<script>
-    var textarea = document.querySelector('ion-textarea');
-
-    textarea.addEventListener('keydown', autosize);
-
-    function autosize(){
-        var el = this;
-        setTimeout(function(){
-            el.style.cssText = 'height:auto; padding:0';
-            // for box-sizing other than "content-box" use:
-            // el.style.cssText = '-moz-box-sizing:content-box';
-            el.style.cssText = 'height:' + el.scrollHeight + 'px';
-        },0);
-    }
-</script>

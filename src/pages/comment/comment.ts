@@ -31,20 +31,14 @@ export class CommentPage {
         this.commentsRef = db.list('tweets/');
         this.items = db.list('tweets/' + this.tweetKey + '/comments').valueChanges();
         this.tweet = navParams.get('tweet');
-        console.log('cc la mifa', this.tweet);
-        console.log('tweetKey?', this.tweetKey)
+        //console.log('tweetKey?', this.tweetKey)
     }
 
     createComment() {
         this.afAuth.authState.subscribe(user => {
             if (this.commentData.content) {
                 this.date = new Date().toISOString();
-                // this.comments.push({
-                //     'name': user.displayName,
-                //     'message': this.commentData.content,
-                //     'date': this.date
-                //
-                // });
+
                 this.db.list('tweets/' + this.tweetKey + '/comments').push({
                     user: user.displayName,
                     avatar: user.photoURL,

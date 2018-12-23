@@ -65,7 +65,7 @@ var CommentPage = /** @class */ (function () {
                     comment: _this.commentData.content
                 });
             }
-            //this.viewCtrl.dismiss();
+            _this.viewCtrl.dismiss();
         });
     };
     CommentPage.prototype.dismiss = function () {
@@ -80,7 +80,7 @@ var CommentPage = /** @class */ (function () {
     };
     CommentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-comment',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/comment/comment.html"*/'<!--\n  Generated template for the CommentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            Commentaires\n        </ion-title>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-card *ngFor="let item of items | async">\n        <ion-item>\n            <ion-avatar item-start>\n                <span class="tweet_info">\n                  <img style="display: inline-block" src="{{item.avatar}}">\n                  <span class="tweet_info_user">\n                    <p class="user_tweet"><b>{{item.user}}</b> <span class="link_user">@{{item.user}}</span></p>\n                    <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n                  </span>\n                </span>\n                <br><br>\n            </ion-avatar>\n        </ion-item>\n\n        <ion-card-content>\n            <p>{{item.comment}}</p>\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n\n<ion-footer>\n    <div class="next_button" ion-fixed>\n        <ion-textarea placeholder="Dweeter votre réponse." [(ngModel)]="commentData.content"></ion-textarea>\n        <button ion-button round (click)="createComment()" class="create_tweet next_button-btn">\n            <span ion-text>Répondre</span>\n        </button>\n        <!--<ion-icon class="next_button-btn" (click)="presentAddComment()" ios="ios-text" md="md-text"></ion-icon>-->\n    </div>\n</ion-footer>\n\n<script>\n    var textarea = document.querySelector(\'ion-textarea\');\n\n    textarea.addEventListener(\'keydown\', autosize);\n\n    function autosize(){\n        var el = this;\n        setTimeout(function(){\n            el.style.cssText = \'height:auto; padding:0\';\n            // for box-sizing other than "content-box" use:\n            // el.style.cssText = \'-moz-box-sizing:content-box\';\n            el.style.cssText = \'height:\' + el.scrollHeight + \'px\';\n        },0);\n    }\n</script>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/comment/comment.html"*/,
+            selector: 'page-comment',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/comment/comment.html"*/'<!--\n  Generated template for the CommentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            Commentaires\n        </ion-title>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-card *ngFor="let item of items | async">\n        <ion-item>\n            <ion-avatar item-start>\n                <span class="tweet_info">\n                  <img style="display: inline-block" src="{{item.avatar}}">\n                  <span class="tweet_info_user">\n                    <p class="user_tweet"><b>{{item.user}}</b> <span class="link_user">@{{item.user}}</span></p>\n                    <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n                  </span>\n                </span>\n                <br><br>\n            </ion-avatar>\n        </ion-item>\n\n        <ion-card-content>\n            <p>{{item.comment}}</p>\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n\n<ion-footer>\n    <div class="next_button" ion-fixed>\n        <ion-textarea placeholder="Dweeter votre réponse." [(ngModel)]="commentData.content"></ion-textarea>\n        <button ion-button round (click)="createComment()" class="create_tweet next_button-btn">\n            <span ion-text>Répondre</span>\n        </button>\n    </div>\n</ion-footer>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/comment/comment.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__["a" /* AngularFireAuth */]])
     ], CommentPage);
@@ -160,7 +160,7 @@ var NewcommentPage = /** @class */ (function () {
     };
     NewcommentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-newcomment',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/newcomment/newcomment.html"*/'<!--\n  Generated template for the NewtweetPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Répondre à ce Dweet\n    </ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <!--<ion-textarea placeholder="Dweecker quelque chose..." [(ngModel)]="tweetData.content"></ion-textarea>-->\n  <ion-textarea placeholder="Dweeter votre réponse." [(ngModel)]="commentData.content"></ion-textarea>\n  <button ion-button round (click)="createComment()" class="create_tweet next_button-btn">\n    <span ion-text>Répondre</span>\n  </button>\n<!--  <button ion-button round (click)="createTweet()">\n    <span ion-text>Tweeter</span>\n  </button>-->\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/newcomment/newcomment.html"*/,
+            selector: 'page-newcomment',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/newcomment/newcomment.html"*/'<!--\n  Generated template for the NewtweetPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            Répondre à ce Dweet\n        </ion-title>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-textarea placeholder="Dweeter votre réponse." [(ngModel)]="commentData.content"></ion-textarea>\n    <button ion-button round (click)="createComment()" class="create_tweet next_button-btn">\n        <span ion-text>Répondre</span>\n    </button>\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/newcomment/newcomment.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__["a" /* AngularFireAuth */]])
     ], NewcommentPage);
@@ -275,7 +275,7 @@ var ImageUploadPage = /** @class */ (function () {
     };
     ImageUploadPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-image-upload',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/image-upload/image-upload.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            <img class="tweetduck_logo" src="../../assets/imgs/tweetduck.png" alt="TweetDuck logo">\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-grid></ion-grid>\n    <h2 text-center><b>Choisir une image de profil</b></h2>\n    <!--ID USER: {{userID}}-->\n    <p class="choose_profilpic">Vous avez un selfie préféré ? Téléchargez-le vite.</p>\n\n    <ion-row>\n        <ion-item class="userPic">\n            <ion-avatar class="white">\n                <img id="user_image" class="avatar" src="{{imgPreview}}" (click)="getImage()">\n            </ion-avatar>\n        </ion-item>\n    </ion-row>\n\n    <div class="next_button">\n        <a href="javascript:void(0)" (click)="noPhoto()">Passer pour le moment</a>\n        <button class="next_button-btn" ion-button round (click)="addUserProfil()">Suivant</button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/image-upload/image-upload.html"*/,
+            selector: 'page-image-upload',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/image-upload/image-upload.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            <img class="tweetduck_logo" src="../../assets/imgs/tweetduck.png" alt="TweetDuck logo">\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-grid></ion-grid>\n    <h2 text-center><b>Choisir une image de profil</b></h2>\n    <p class="choose_profilpic">Vous avez un selfie préféré ? Téléchargez-le vite.</p>\n\n    <ion-row>\n        <ion-item class="userPic">\n            <ion-avatar class="white">\n                <img id="user_image" class="avatar" src="{{imgPreview}}" (click)="getImage()">\n            </ion-avatar>\n        </ion-item>\n    </ion-row>\n\n    <div class="next_button">\n        <a href="javascript:void(0)" (click)="noPhoto()">Passer pour le moment</a>\n        <button class="next_button-btn" ion-button round (click)="addUserProfil()">Suivant</button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/image-upload/image-upload.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */]])
     ], ImageUploadPage);
@@ -342,7 +342,7 @@ var LikePage = /** @class */ (function () {
     };
     LikePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-like',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/like/like.html"*/'<!--\n  Generated template for the LikePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-toolbar>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>Aimé par</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-card *ngFor="let item of items | async">\n        <ion-item>\n            <ion-avatar item-start>\n                <!--<h2>{{item.name}}</h2>-->\n                <span class="tweet_info">\n                  <img style="display: inline-block" src="{{item.user_avatar}}">\n                  <span class="tweet_info_user">\n                    <p class="user_tweet"><b>{{item.user_name}}</b><br><span class="link_user">@{{item.user_name}}</span></p>\n                  </span>\n                </span>\n            </ion-avatar>\n        </ion-item>\n    </ion-card>\n</ion-content>\n\n<ion-footer>\n    <div class="next_button" ion-fixed>\n        <ion-icon class="next_button-btn" (click)="addLike()" ios="ios-heart" md="md-heart"></ion-icon>\n    </div>\n</ion-footer>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/like/like.html"*/,
+            selector: 'page-like',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/like/like.html"*/'<!--\n  Generated template for the LikePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-toolbar>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios"><ion-icon name="arrow-back"></ion-icon></span>\n                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>Aimé par</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-card *ngFor="let item of items | async">\n        <ion-item>\n            <ion-avatar item-start>\n                <span class="tweet_info">\n                  <img style="display: inline-block" src="{{item.user_avatar}}">\n                  <span class="tweet_info_user">\n                    <p class="user_tweet"><b>{{item.user_name}}</b><br><span class="link_user">@{{item.user_name}}</span></p>\n                  </span>\n                </span>\n            </ion-avatar>\n        </ion-item>\n    </ion-card>\n</ion-content>\n\n<ion-footer>\n    <div class="next_button" ion-fixed>\n        <ion-icon class="next_button-btn" (click)="addLike()" ios="ios-heart" md="md-heart"></ion-icon>\n    </div>\n</ion-footer>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/like/like.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */]])
     ], LikePage);
@@ -575,7 +575,7 @@ var NewtweetPage = /** @class */ (function () {
     };
     NewtweetPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-newtweet',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/newtweet/newtweet.html"*/'<!--\n  Generated template for the NewtweetPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-toolbar>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span ion-text color="primary" showWhen="ios"><ion-icon name="close"></ion-icon></span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <span class="tweet_info">\n    <img style="display: inline-block" src="{{userImg}}">\n  </span>\n  <span class="tweet_info_user">\n    <ion-textarea placeholder="Quoi de neuf ?" [(ngModel)]="tweetData.content"></ion-textarea>\n  </span>\n\n  <!--<img src="javascript:void(0)" alt="" id="tweet_image">-->\n\n  <div class="next_button">\n    <!--<ion-icon class="add_pic_tweet" ios="ios-image" md="md-image" (click)="getImage()"></ion-icon>-->\n    <button ion-button round (click)="createTweet()" class="create_tweet next_button-btn">\n      <span ion-text>Tweeter</span>\n    </button>\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/newtweet/newtweet.html"*/,
+            selector: 'page-newtweet',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/newtweet/newtweet.html"*/'<!--\n  Generated template for the NewtweetPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-toolbar>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span ion-text color="primary" showWhen="ios"><ion-icon name="close"></ion-icon></span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <span class="tweet_info">\n    <img style="display: inline-block" src="{{userImg}}">\n  </span>\n  <span class="tweet_info_user">\n    <ion-textarea placeholder="Quoi de neuf ?" [(ngModel)]="tweetData.content"></ion-textarea>\n  </span>\n\n  <div class="next_button">\n    <button ion-button round (click)="createTweet()" class="create_tweet next_button-btn">\n      <span ion-text>Tweeter</span>\n    </button>\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/newtweet/newtweet.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */],
             __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
@@ -709,7 +709,7 @@ var ProfilePage = /** @class */ (function () {
     };
     ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-profile',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/profile/profile.html"*/'<!--\n  Generated template for the ProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!--<ion-header>\n  <ion-navbar color=twitter>\n    <ion-title>Profile</ion-title>\n  </ion-navbar>\n</ion-header>-->\n\n<ion-content padding >\n  <img class="background_profil" src="../../assets/imgs/twitter_background.jpg" alt="User profil pic">\n\n  <ion-grid>\n    <ion-row>\n      <ion-col class="user_info" col-lg-1>\n        <img src="{{userImg}}" alt="User profil pic" (click)="imageProfil()">\n        <h3>{{displayName}} <ion-icon class="exit" ios="ios-exit-outline" md="md-exit" (click)="logOut()"></ion-icon></h3>\n        <p class="user_mail">@{{displayName}}</p>\n        <p class="user_crea"><ion-icon ios="ios-calendar" md="md-calendar">&nbsp;</ion-icon>A rejoint TweetDuck le {{userCrea.creationTime | date: \'dd MMMM yyyy\'}}</p>\n      </ion-col>\n    </ion-row>\n    <ion-row class="tweet_after">\n      <ion-col class="col_tweet">\n        <span><b>Tweets</b></span>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n  <ion-card *ngFor="let item of (tweetsByUser | async)?.slice().reverse()">\n    <ion-item>\n      <ion-avatar item-start>\n        <!--<h2>{{item.name}}</h2>-->\n        <span class="tweet_info">\n          <img style="display: inline-block" src="{{item.tweet_user_img}}">\n          <span class="tweet_info_user">\n            <p class="user_tweet"><b>{{item.tweet_user}}</b> <span class="link_user">@{{item.tweet_user}}</span></p>\n            <!--<ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>-->\n            <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n          </span>\n        </span>\n        <br><br>\n      </ion-avatar>\n    </ion-item>\n\n    <ion-card-content>\n      <p>{{item.tweet}}</p>\n    </ion-card-content>\n  </ion-card>\n\n  <!--<ion-item *ngFor="let item of (items | async)?.slice().reverse()">\n      {{item.tweet_user}}\n  </ion-item>\n  <button ion-button color="duckcoin" (click)="logOut()">Se déconnecter</button>-->\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/profile/profile.html"*/,
+            selector: 'page-profile',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/profile/profile.html"*/'<!--\n  Generated template for the ProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!--<ion-header>\n  <ion-navbar color=twitter>\n    <ion-title>Profile</ion-title>\n  </ion-navbar>\n</ion-header>-->\n\n<ion-content padding>\n    <img class="background_profil" src="../../assets/imgs/twitter_background.jpg" alt="User profil pic">\n\n    <ion-grid>\n        <ion-row>\n            <ion-col class="user_info" col-lg-1>\n                <img src="{{userImg}}" alt="User profil pic" (click)="imageProfil()">\n                <h3>{{displayName}}\n                    <ion-icon class="exit" ios="ios-exit-outline" md="md-exit" (click)="logOut()"></ion-icon>\n                </h3>\n                <p class="user_mail">@{{displayName}}</p>\n                <p class="user_crea">\n                    <ion-icon ios="ios-calendar" md="md-calendar">&nbsp;</ion-icon>\n                    A rejoint TweetDuck le {{userCrea.creationTime | date: \'dd MMMM yyyy\'}}\n                </p>\n            </ion-col>\n        </ion-row>\n        <ion-row class="tweet_after">\n            <ion-col class="col_tweet">\n                <span><b>Tweets</b></span>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n\n    <ion-card *ngFor="let item of (tweetsByUser | async)?.slice().reverse()">\n        <ion-item>\n            <ion-avatar item-start>\n        <span class="tweet_info">\n          <img style="display: inline-block" src="{{item.tweet_user_img}}">\n          <span class="tweet_info_user">\n            <p class="user_tweet"><b>{{item.tweet_user}}</b> <span class="link_user">@{{item.tweet_user}}</span></p>\n            <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n          </span>\n        </span>\n                <br><br>\n            </ion-avatar>\n        </ion-item>\n\n        <ion-card-content>\n            <p>{{item.tweet}}</p>\n        </ion-card-content>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/profile/profile.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
             __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_4__angular_fire_database__["a" /* AngularFireDatabase */]])
@@ -826,7 +826,7 @@ var UserImagePage = /** @class */ (function () {
     };
     UserImagePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-user-image',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/user-image/user-image.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img class="tweetduck_logo" src="../../assets/imgs/tweetduck.png" alt="TweetDuck logo">\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid></ion-grid>\n  <h2 text-center><b>Choisir une image de profil</b></h2>\n  <!--ID USER: {{userID}}-->\n  <p class="choose_profilpic">Vous avez un nouveau selfie préféré ? Changez-le vite.</p>\n\n  <ion-row>\n    <ion-item class="userPic">\n      <ion-avatar class="white">\n        <img id="user_image" class="avatar" src="{{imgPreview}}" (click)="getImage()">\n      </ion-avatar>\n    </ion-item>\n  </ion-row>\n\n  <div class="next_button">\n    <a href="javascript:void(0)" (click)="noPhoto()">Ne pas modifier pour l\'instant</a>\n    <button class="next_button-btn" ion-button round (click)="addUserProfil()">Changer</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/user-image/user-image.html"*/,
+            selector: 'page-user-image',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/user-image/user-image.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img class="tweetduck_logo" src="../../assets/imgs/tweetduck.png" alt="TweetDuck logo">\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid></ion-grid>\n  <h2 text-center><b>Choisir une image de profil</b></h2>\n  <p class="choose_profilpic">Vous avez un nouveau selfie préféré ? Changez-le vite.</p>\n\n  <ion-row>\n    <ion-item class="userPic">\n      <ion-avatar class="white">\n        <img id="user_image" class="avatar" src="{{imgPreview}}" (click)="getImage()">\n      </ion-avatar>\n    </ion-item>\n  </ion-row>\n\n  <div class="next_button">\n    <a href="javascript:void(0)" (click)="noPhoto()">Ne pas modifier pour l\'instant</a>\n    <button class="next_button-btn" ion-button round (click)="addUserProfil()">Changer</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/user-image/user-image.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */]])
     ], UserImagePage);
@@ -860,47 +860,43 @@ webpackEmptyAsyncContext.id = 210;
 var map = {
 	"../pages/comment/comment.module": [
 		527,
-		10
+		22
 	],
 	"../pages/image-upload/image-upload.module": [
 		528,
-		9
+		21
 	],
 	"../pages/intro/intro.module": [
 		529,
-		8
+		20
 	],
 	"../pages/like/like.module": [
 		530,
-		7
-	],
-	"../pages/login/login.module": [
-		531,
-		6
+		19
 	],
 	"../pages/newcomment/newcomment.module": [
 		532,
-		5
+		18
 	],
 	"../pages/newtweet/newtweet.module": [
-		533,
-		4
+		534,
+		17
 	],
 	"../pages/profile/profile.module": [
-		534,
-		3
+		533,
+		16
 	],
 	"../pages/signin/signin.module": [
 		535,
-		2
+		15
 	],
 	"../pages/signup/signup.module": [
 		536,
-		1
+		14
 	],
 	"../pages/user-image/user-image.module": [
 		537,
-		0
+		13
 	]
 };
 function webpackAsyncContext(req) {
@@ -996,35 +992,6 @@ var HomePage = /** @class */ (function () {
                     //console.log(user.val());
                 });
             });
-            /*return firebase.database().ref('tweets/').once('value').then(function(snapshot) {
-                snapshot.forEach(function(childSnapshot) {
-                    childSnapshot.forEach(function(childSnapshot) {
-                        var items = childSnapshot.val();
-                    });
-                });
-            });*/
-            /*var refUsers = db.list('users');
-            //refUsers.push({'nom': 'Leininger', 'prenom': 'Brandon', 'pseudo': 'brandonle', 'tweet_id':2});
-            //refUsers.push({'name': 'AnotherName2', message: 'Un commentaire2. ', 'tweet_id':3});
-
-            var ref = firebase.database().ref('tweets');
-            ref.on("child_added", function (snapshot, childKey) {
-                console.log(childKey);
-            });*/
-            /*console.log(ref.child('tweet').key);
-            ref.once('value').then(function(snapshot) {
-                var numchildren = snapshot.numChildren();
-                var key = snapshot.val();
-                var childKey = snapshot.child("tweet").key;
-                //console.log(numchildren);
-                console.log(key);
-                console.log(key.name);
-                //console.log(childKey);
-            });*/
-            //console.log(db.list('tweets').valueChanges());
-            //this.tweetComments = db.list('tweets').valueChanges();
-            //console.log(this.items = db.list('tweets').valueChanges());
-            //console.log(this.commentsRef = db.list('tweets'));
         });
     } //constructor end
     //Pour afficher la modal des Commentaires
@@ -1053,11 +1020,12 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/home/home.html"*/'<ion-header>\n\n  <ion-navbar color="twitter">\n\n    <ion-title>TweetDuck</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <!--<h2 class="username">{{username}}</h2>-->\n\n\n\n  <!--<ion-card *ngFor="let item of tweetComments">\n\n    <p>{{item.tweet}}</p>\n\n  </ion-card>-->\n\n\n\n  <!--<hr style="background: white">-->\n\n  <ion-card *ngFor="let item of (items | async)?.slice().reverse()">\n\n    <ion-item>\n\n      <ion-avatar item-start>\n\n        <!--<h2>{{item.name}}</h2>-->\n\n        <span class="tweet_info">\n\n          <img style="display: inline-block" src="{{item.tweet_user_img}}">\n\n          <span class="tweet_info_user">\n\n            <p class="user_tweet"><b>{{item.tweet_user}}</b> <span class="link_user">@{{item.tweet_user}}</span></p>\n\n            <!--<ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [(ngModel)]="date">{{item.date}}</ion-datetime>-->\n\n            <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n\n          </span>\n\n        </span>\n\n        <br><br>\n\n      </ion-avatar>\n\n    </ion-item>\n\n\n\n    <ion-card-content>\n\n      <p>{{item.tweet}}</p>\n\n    </ion-card-content>\n\n\n\n    <ion-row>\n\n      <ion-col class="likes_comments_bar">\n\n        <button ion-button icon-start clear small>\n\n          <div class="comments_title" (click)="presentComment(item.key)">\n\n            <ion-icon ios="ios-text-outline" md="md-text"></ion-icon><span class="icon_number">{{item.comments ? countObj(item.comments) : \'\'}}</span>\n\n          </div>\n\n        </button>\n\n        <button ion-button icon-start clear small>\n\n          <div class="likes_title" (click)="presentLike(item.key)">\n\n            <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon><span class="icon_number">{{item.likes ? countObj(item.likes) : \'\'}}</span>\n\n          </div>\n\n        </button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-card>\n\n</ion-content>\n\n\n\n<ion-footer>\n\n  <div class="add_tweet" (click)="presentAddTweet()"><ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon></div>\n\n</ion-footer>\n\n\n\n<script>\n\n  console.log(\'TOO\');\n\n</script><script src="build/vendor.js"></script>\n\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/home/home.html"*/'<ion-header>\n\n    <ion-navbar color="twitter">\n\n        <ion-title>TweetDuck</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n    <ion-card *ngFor="let item of (items | async)?.slice().reverse()">\n\n        <ion-item>\n\n            <ion-avatar item-start>\n\n        <span class="tweet_info">\n\n          <img style="display: inline-block" src="{{item.tweet_user_img}}">\n\n          <span class="tweet_info_user">\n\n            <p class="user_tweet"><b>{{item.tweet_user}}</b> <span class="link_user">@{{item.tweet_user}}</span></p>\n\n            <p class="tweet_date">{{item.date | date: \'dd/MM/yyyy à H:mm\'}}</p>\n\n          </span>\n\n        </span>\n\n                <br><br>\n\n            </ion-avatar>\n\n        </ion-item>\n\n\n\n        <ion-card-content>\n\n            <p>{{item.tweet}}</p>\n\n        </ion-card-content>\n\n\n\n        <ion-row>\n\n            <ion-col class="likes_comments_bar">\n\n                <button ion-button icon-start clear small>\n\n                    <div class="comments_title" (click)="presentComment(item.key)">\n\n                        <ion-icon ios="ios-text-outline" md="md-text"></ion-icon>\n\n                        <span class="icon_number">{{item.comments ? countObj(item.comments) : \'\'}}</span>\n\n                    </div>\n\n                </button>\n\n                <button ion-button icon-start clear small>\n\n                    <div class="likes_title" (click)="presentLike(item.key)">\n\n                        <ion-icon ios="ios-heart-outline" md="md-heart-outline"></ion-icon>\n\n                        <span class="icon_number">{{item.likes ? countObj(item.likes) : \'\'}}</span>\n\n                    </div>\n\n                </button>\n\n            </ion-col>\n\n        </ion-row>\n\n    </ion-card>\n\n</ion-content>\n\n\n\n<ion-footer>\n\n    <div class="add_tweet" (click)="presentAddTweet()">\n\n        <ion-icon class="add_tweet" ios="ios-add-circle" md="md-add-circle"></ion-icon>\n\n    </div>\n\n</ion-footer>\n\n\n\n<script src="build/vendor.js"></script>\n\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_auth__["a" /* AngularFireAuth */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _e || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d, _e;
 }()); //end export class HomePage
 
 /* CES LIGNES POUR CRÉER LA COLLECTION ('tweets' à la place de 'items') (Angulare FirestoreColleciton)
@@ -1073,63 +1041,6 @@ var HomePage = /** @class */ (function () {
   }
 }*/
 //# sourceMappingURL=home.js.map
-
-/***/ }),
-
-/***/ 308:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__signin_signin__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__signup_signup__ = __webpack_require__(77);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var LoginPage = /** @class */ (function () {
-    function LoginPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-    }
-    LoginPage.prototype.gotoHome = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__tabs_tabs__["a" /* TabsPage */]);
-    };
-    LoginPage.prototype.gotoSignIn = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__signin_signin__["a" /* SigninPage */]);
-    };
-    LoginPage.prototype.gotoSignUp = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__signup_signup__["a" /* SignupPage */]);
-    };
-    LoginPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/login/login.html"*/'<ion-header>\n  <ion-navbar color="duckcoin">\n    <ion-title>Login</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2 text-center>La monnaie solidaire</h2>\n\n  <p text-justify>Vous souhaitez être de la partie ? Alors n\'attendez plus ! Connectez-vous ou inscrivez-vous: avec un peu de chance, vous recevrez peut-être\n  un versement de la part d\'un proche ou d\'un ami ? Des millions de DuckCoin sont en jeu !!</p>\n\n  <br>\n\n  <button ion-button block (click)="gotoSignIn()">Se connecter</button>\n\n  <br><br>\n\n  <button ion-button block color="duckcoin" (click)="gotoSignUp()">S\'inscrire</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/login/login.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
-    ], LoginPage);
-    return LoginPage;
-}());
-
-//# sourceMappingURL=login.js.map
 
 /***/ }),
 
@@ -1164,35 +1075,31 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_intro_intro__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_home_home__ = __webpack_require__(264);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_profile_profile__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_login_login__ = __webpack_require__(308);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_modal_modal__ = __webpack_require__(524);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_tabs_tabs__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_newtweet_newtweet__ = __webpack_require__(169);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_newcomment_newcomment__ = __webpack_require__(166);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_like_like__ = __webpack_require__(168);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_comment_comment__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_image_upload_image_upload__ = __webpack_require__(167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_user_image_user_image__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_signin_signin__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_signup_signup__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_status_bar__ = __webpack_require__(306);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_splash_screen__ = __webpack_require__(307);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_image_picker__ = __webpack_require__(525);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_base64__ = __webpack_require__(526);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_camera__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_fire__ = __webpack_require__(140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_fire_database__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_fire_auth__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30_firebase_app__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_30_firebase_app__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_tabs_tabs__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_newtweet_newtweet__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_newcomment_newcomment__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_like_like__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_comment_comment__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_image_upload_image_upload__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_user_image_user_image__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_signin_signin__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_signup_signup__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_status_bar__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_splash_screen__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_image_picker__ = __webpack_require__(525);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_base64__ = __webpack_require__(526);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_camera__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_fire__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__angular_fire_database__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_fire_auth__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_firebase_app__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_28_firebase_app__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
 
 
 
@@ -1232,7 +1139,7 @@ var firebaseConfig = {
     messagingSenderId: "572695404930"
 };
 
-__WEBPACK_IMPORTED_MODULE_30_firebase_app___default.a.initializeApp(firebaseConfig);
+__WEBPACK_IMPORTED_MODULE_28_firebase_app___default.a.initializeApp(firebaseConfig);
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -1243,17 +1150,15 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_8__pages_intro_intro__["a" /* IntroPage */],
                 __WEBPACK_IMPORTED_MODULE_9__pages_home_home__["a" /* HomePage */],
                 __WEBPACK_IMPORTED_MODULE_10__pages_profile_profile__["a" /* ProfilePage */],
-                __WEBPACK_IMPORTED_MODULE_11__pages_login_login__["a" /* LoginPage */],
-                __WEBPACK_IMPORTED_MODULE_20__pages_signin_signin__["a" /* SigninPage */],
-                __WEBPACK_IMPORTED_MODULE_21__pages_signup_signup__["a" /* SignupPage */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_modal_modal__["a" /* ModalPage */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_comment_comment__["a" /* CommentPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_newcomment_newcomment__["a" /* NewcommentPage */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_like_like__["a" /* LikePage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_newtweet_newtweet__["a" /* NewtweetPage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_image_upload_image_upload__["a" /* ImageUploadPage */],
-                __WEBPACK_IMPORTED_MODULE_19__pages_user_image_user_image__["a" /* UserImagePage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_tabs_tabs__["a" /* TabsPage */]
+                __WEBPACK_IMPORTED_MODULE_18__pages_signin_signin__["a" /* SigninPage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_signup_signup__["a" /* SignupPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_comment_comment__["a" /* CommentPage */],
+                __WEBPACK_IMPORTED_MODULE_13__pages_newcomment_newcomment__["a" /* NewcommentPage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_like_like__["a" /* LikePage */],
+                __WEBPACK_IMPORTED_MODULE_12__pages_newtweet_newtweet__["a" /* NewtweetPage */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_image_upload_image_upload__["a" /* ImageUploadPage */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_user_image_user_image__["a" /* UserImagePage */],
+                __WEBPACK_IMPORTED_MODULE_11__pages_tabs_tabs__["a" /* TabsPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
@@ -1270,45 +1175,42 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/image-upload/image-upload.module#ImageUploadPageModule', name: 'ImageUploadPage', segment: 'image-upload', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/intro/intro.module#IntroPageModule', name: 'IntroPage', segment: 'intro', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/like/like.module#LikePageModule', name: 'LikePage', segment: 'like', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/newcomment/newcomment.module#NewcommentPageModule', name: 'NewcommentPage', segment: 'newcomment', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/newtweet/newtweet.module#NewtweetPageModule', name: 'NewtweetPage', segment: 'newtweet', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/newtweet/newtweet.module#NewtweetPageModule', name: 'NewtweetPage', segment: 'newtweet', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signin/signin.module#SigninPageModule', name: 'SigninPage', segment: 'signin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/user-image/user-image.module#UserImagePageModule', name: 'UserImagePage', segment: 'user-image', priority: 'low', defaultHistory: [] }
                     ]
                 }),
-                __WEBPACK_IMPORTED_MODULE_27__angular_fire__["a" /* AngularFireModule */].initializeApp(firebaseConfig),
-                __WEBPACK_IMPORTED_MODULE_28__angular_fire_database__["b" /* AngularFireDatabaseModule */],
-                __WEBPACK_IMPORTED_MODULE_29__angular_fire_auth__["b" /* AngularFireAuthModule */]
+                __WEBPACK_IMPORTED_MODULE_25__angular_fire__["a" /* AngularFireModule */].initializeApp(firebaseConfig),
+                __WEBPACK_IMPORTED_MODULE_26__angular_fire_database__["b" /* AngularFireDatabaseModule */],
+                __WEBPACK_IMPORTED_MODULE_27__angular_fire_auth__["b" /* AngularFireAuthModule */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_6_ionic_angular__["d" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_7__app_app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_8__pages_intro_intro__["a" /* IntroPage */],
                 __WEBPACK_IMPORTED_MODULE_9__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_modal_modal__["a" /* ModalPage */],
                 __WEBPACK_IMPORTED_MODULE_10__pages_profile_profile__["a" /* ProfilePage */],
-                __WEBPACK_IMPORTED_MODULE_11__pages_login_login__["a" /* LoginPage */],
-                __WEBPACK_IMPORTED_MODULE_20__pages_signin_signin__["a" /* SigninPage */],
-                __WEBPACK_IMPORTED_MODULE_21__pages_signup_signup__["a" /* SignupPage */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_comment_comment__["a" /* CommentPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_newcomment_newcomment__["a" /* NewcommentPage */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_like_like__["a" /* LikePage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_tabs_tabs__["a" /* TabsPage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_image_upload_image_upload__["a" /* ImageUploadPage */],
-                __WEBPACK_IMPORTED_MODULE_19__pages_user_image_user_image__["a" /* UserImagePage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_newtweet_newtweet__["a" /* NewtweetPage */]
+                __WEBPACK_IMPORTED_MODULE_18__pages_signin_signin__["a" /* SigninPage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_signup_signup__["a" /* SignupPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_comment_comment__["a" /* CommentPage */],
+                __WEBPACK_IMPORTED_MODULE_13__pages_newcomment_newcomment__["a" /* NewcommentPage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_like_like__["a" /* LikePage */],
+                __WEBPACK_IMPORTED_MODULE_11__pages_tabs_tabs__["a" /* TabsPage */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_image_upload_image_upload__["a" /* ImageUploadPage */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_user_image_user_image__["a" /* UserImagePage */],
+                __WEBPACK_IMPORTED_MODULE_12__pages_newtweet_newtweet__["a" /* NewtweetPage */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_22__ionic_native_status_bar__["a" /* StatusBar */],
-                __WEBPACK_IMPORTED_MODULE_23__ionic_native_splash_screen__["a" /* SplashScreen */],
-                __WEBPACK_IMPORTED_MODULE_28__angular_fire_database__["a" /* AngularFireDatabase */],
+                __WEBPACK_IMPORTED_MODULE_20__ionic_native_status_bar__["a" /* StatusBar */],
+                __WEBPACK_IMPORTED_MODULE_21__ionic_native_splash_screen__["a" /* SplashScreen */],
+                __WEBPACK_IMPORTED_MODULE_26__angular_fire_database__["a" /* AngularFireDatabase */],
                 { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_6_ionic_angular__["e" /* IonicErrorHandler */] },
-                __WEBPACK_IMPORTED_MODULE_24__ionic_native_image_picker__["a" /* ImagePicker */],
-                __WEBPACK_IMPORTED_MODULE_25__ionic_native_base64__["a" /* Base64 */],
-                __WEBPACK_IMPORTED_MODULE_26__ionic_native_camera__["a" /* Camera */]
+                __WEBPACK_IMPORTED_MODULE_22__ionic_native_image_picker__["a" /* ImagePicker */],
+                __WEBPACK_IMPORTED_MODULE_23__ionic_native_base64__["a" /* Base64 */],
+                __WEBPACK_IMPORTED_MODULE_24__ionic_native_camera__["a" /* Camera */]
             ]
         })
     ], AppModule);
@@ -1637,159 +1539,6 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 524:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModalPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the ModalPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ModalPage = /** @class */ (function () {
-    function ModalPage(platform, params, viewCtrl) {
-        this.platform = platform;
-        this.params = params;
-        this.viewCtrl = viewCtrl;
-        var transactions = [
-            {
-                'sender': 'charles',
-                'recipient': 'maxime',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'raphael',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'doreen',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'louis-joseph',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'elise',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'germain',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'anthony',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'pol',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'vincent',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'nicolas',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'kevin',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'willy',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'elodie',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'adrien',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'romain',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'quentin',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'jean-etienne',
-                'amount': 100,
-            },
-            {
-                'sender': 'charles',
-                'recipient': 'gael',
-                'amount': 100,
-            }
-        ];
-        this.transaction = transactions[this.params.get('sender')];
-    }
-    ModalPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    ModalPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ModalPage');
-    };
-    ModalPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-modal',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/modal/modal.html"*/'<!--\n  Generated template for the ModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Description\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n      <ion-item>\n        <ion-avatar item-start>\n          {{transaction.recipient}}\n          <br>\n          TOTO\n        </ion-avatar>\n\n      </ion-item>\n\n\n  </ion-list>\n\n  <button ion-button color="danger" full (click)="dismiss()"><ion-icon name="thumbs-up"></ion-icon></button>\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/modal/modal.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */]])
-    ], ModalPage);
-    return ModalPage;
-}());
-
-/*export class MaPageModal {
-
-
-  constructor(public platform: Platform, public params: NavParams, public viewCtrl: ViewController) {
-    this.unParamVenuDeLoin = this.params.get('monParam');
-  }
-
-  dismiss() {
-    this.viewCtrl.dismiss();
-  }
-}*/
-//# sourceMappingURL=modal.js.map
-
-/***/ }),
-
 /***/ 77:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1986,7 +1735,7 @@ var IntroPage = /** @class */ (function () {
     };
     IntroPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-intro',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/intro/intro.html"*/'<!--\n  Generated template for the IntroPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img class="tweetduck_logo" src="../../assets/imgs/tweetduck.png" alt="TweetDuck logo">\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <!--<img class="tweetduck_logo" src="../../assets/imgs/tweetduck.png" alt="TweetDuck logo">-->\n    <p></p>\n    <div>\n      <h2><b>Découvrez ce qui se passe dans le monde en temps réel</b></h2>\n      <button ion-button round color="primary" (click)="gotoSignUp()">Démarrer</button>\n    </div>\n    <p class="">Vous avez déjà un compte ? <a href="javascript:void(0)" (click)="gotoSignIn()">Connectez-vous</a></p>\n\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/intro/intro.html"*/,
+            selector: 'page-intro',template:/*ion-inline-start:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/intro/intro.html"*/'<!--\n  Generated template for the IntroPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img class="tweetduck_logo" src="../../assets/imgs/tweetduck.png" alt="TweetDuck logo">\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <p> </p>\n    <div>\n      <h2><b>Découvrez ce qui se passe dans le monde en temps réel</b></h2>\n      <button ion-button round color="primary" (click)="gotoSignUp()">Démarrer</button>\n    </div>\n    <p class="">Vous avez déjà un compte ? <a href="javascript:void(0)" (click)="gotoSignIn()">Connectez-vous</a></p>\n\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/brandonleininger/Documents/LPDEV/ionic/firecoin/src/pages/intro/intro.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
     ], IntroPage);

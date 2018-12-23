@@ -10,8 +10,6 @@ import {MyApp} from '../app/app.component';
 import {IntroPage} from '../pages/intro/intro';
 import {HomePage} from '../pages/home/home';
 import {ProfilePage} from "../pages/profile/profile";
-import {LoginPage} from "../pages/login/login";
-import {ModalPage} from '../pages/modal/modal';
 import {TabsPage} from '../pages/tabs/tabs';
 import {NewtweetPage} from '../pages/newtweet/newtweet';
 import {NewcommentPage} from '../pages/newcomment/newcomment';
@@ -57,10 +55,8 @@ firebase.initializeApp(firebaseConfig);
         IntroPage,
         HomePage,
         ProfilePage,
-        LoginPage,
         SigninPage,
         SignupPage,
-        ModalPage,
         CommentPage,
         NewcommentPage,
         LikePage,
@@ -88,9 +84,7 @@ firebase.initializeApp(firebaseConfig);
         MyApp,
         IntroPage,
         HomePage,
-        ModalPage,
         ProfilePage,
-        LoginPage,
         SigninPage,
         SignupPage,
         CommentPage,
