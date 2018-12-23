@@ -17,15 +17,50 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content padding>
-    <ion-list>
-        <ion-item *ngFor="let item of items | async">
-            <ion-avatar item-start>
-                <img src="../../assets/imgs/logo.png">
-            </ion-avatar>
-            <h2>{{item.name}}</h2>
-            <p>{{item.message}}</p>
-        </ion-item>
-    </ion-list>
 
+<ion-content padding>
+    <ion-card *ngFor="let item of items | async">
+        <ion-item>
+            <ion-avatar item-start>
+                <span class="tweet_info">
+                  <img style="display: inline-block" src="{{item.avatar}}">
+                  <span class="tweet_info_user">
+                    <p class="user_tweet"><b>{{item.user}}</b> <span class="link_user">@{{item.user}}</span></p>
+                    <p class="tweet_date">{{item.date | date: 'dd/MM/yyyy à H:mm'}}</p>
+                  </span>
+                </span>
+                <br><br>
+            </ion-avatar>
+        </ion-item>
+
+        <ion-card-content>
+            <p>{{item.comment}}</p>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
+
+<ion-footer>
+    <div class="next_button" ion-fixed>
+        <ion-textarea placeholder="Dweeter votre réponse." [(ngModel)]="commentData.content"></ion-textarea>
+        <button ion-button round (click)="createComment()" class="create_tweet next_button-btn">
+            <span ion-text>Répondre</span>
+        </button>
+        <!--<ion-icon class="next_button-btn" (click)="presentAddComment()" ios="ios-text" md="md-text"></ion-icon>-->
+    </div>
+</ion-footer>
+
+<script>
+    var textarea = document.querySelector('ion-textarea');
+
+    textarea.addEventListener('keydown', autosize);
+
+    function autosize(){
+        var el = this;
+        setTimeout(function(){
+            el.style.cssText = 'height:auto; padding:0';
+            // for box-sizing other than "content-box" use:
+            // el.style.cssText = '-moz-box-sizing:content-box';
+            el.style.cssText = 'height:' + el.scrollHeight + 'px';
+        },0);
+    }
+</script>

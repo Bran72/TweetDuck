@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
-import { AngularFireDatabase } from '@angular/fire/database';
+import {IonicPage, NavController, NavParams, ViewController, ModalController} from 'ionic-angular';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {NewcommentPage} from "../newcomment/newcomment";
+
 //import {el} from "@angular/platform-browser/testing/src/browser_util";
 /**
  * Generated class for the CommentPage page.
@@ -16,30 +19,55 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class CommentPage {
 
+    commentData: any = {};
     items: any;
-    commentsRef:any;
-    constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, db: AngularFireDatabase) {
-        /*const items = [
-            {'name': 'AnotherName1', message: 'Un commentaire1. '},
-            {'name': 'AnotherName2', message: 'Un commentaire2.'},
-            {'name': 'AnotherName3', message: 'Et pourquoi pas un commentaire3.'}
-        ];*/
+    commentsRef: any;
+    tweet: any;
+    tweetKey: any;
+    date: any;
 
-        this.commentsRef = db.list('comments');
-        this.items = db.list('comments').valueChanges();
+    constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public viewCtrl: ViewController, public db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+        this.tweetKey = navParams.get('key');
+        this.commentsRef = db.list('tweets/');
+        this.items = db.list('tweets/' + this.tweetKey + '/comments').valueChanges();
+        this.tweet = navParams.get('tweet');
+        console.log('cc la mifa', this.tweet);
+        console.log('tweetKey?', this.tweetKey)
+    }
+
+    createComment() {
+        this.afAuth.authState.subscribe(user => {
+            if (this.commentData.content) {
+                this.date = new Date().toISOString();
+                // this.comments.push({
+                //     'name': user.displayName,
+                //     'message': this.commentData.content,
+                //     'date': this.date
+                //
+                // });
+                this.db.list('tweets/' + this.tweetKey + '/comments').push({
+                    user: user.displayName,
+                    avatar: user.photoURL,
+                    date: this.date,
+                    comment: this.commentData.content
+                })
+            }
+            //this.viewCtrl.dismiss();
+        })
+    }
 
 
-        //this.commentsRef.push({'name': 'AnotherName19789809', message: 'Un commentaire1000987787. ', 'tweet_id':2});
-        //this.commentsRef.push({'name': 'AnotherName2', message: 'Un commentaire2. ', 'tweet_id':3});
-
+    dismiss() {
+        this.viewCtrl.dismiss();
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad CommentPage');
     }
 
-    dismiss() {
-        this.viewCtrl.dismiss();
+    presentAddComment() {
+        const modal = this.modalCtrl.create(NewcommentPage, {tweet: this.tweet, key: this.tweetKey});
+        modal.present();
     }
 
 }

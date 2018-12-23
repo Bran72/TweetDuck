@@ -181,16 +181,17 @@ export class NewtweetPage {
         this.viewCtrl.dismiss();
     }
 
-    onSuccess = snapshot => {
+  /*  onSuccess = snapshot => {
         this.tweetPhotoUrl = snapshot.getDownloadURL();
-        console.log('I think IT WORKKKKSSSSSS I THINK I THINK MAYBE BITCH I\'M BELLE THORNE')
+        console.log('I think IT WORKKKKSSSSSS I THINK I THINK MAYBE')
     };
 
     onError = error => {
         this.tweetPhotoUrl = 'error';
 
-        console.log("EERRRROOOOOOORRRRRRR !!!!!!!! --> ", error);
+        console.log(error);
     };
+*/
 
     uploadImage() {
         let username = this.user.displayName;

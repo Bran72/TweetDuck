@@ -32,6 +32,9 @@ page-profile {
     .link_user{color: #8c8c8c;}
     .tweet_date{font-size: 1.2rem; color: #8c8c8c !important;}
 
+    .button-inner > div{display: flex; align-items: center; color: #657786 !important}
+    .button-inner .icon_number{font-size: 1rem; margin-top: .1rem; color: #657786;}
+
     .exit{position: absolute !important; top: 5rem; right: 2rem; color: red !important}
   }
 }

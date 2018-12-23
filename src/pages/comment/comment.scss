@@ -1,3 +1,29 @@
 page-comment {
+  ion-toolbar ion-title > div{color: white !important}
+  .scroll-content{
+    padding: 0 !important;
+    margin-bottom: 50px;
 
+    ion-card{width: 100% !important; margin: 0 !important; padding: 0 1em !important; background: #15202b !important; border-top: 1px solid #38444d; }
+    ion-card:last-child{ border-bottom: 1px solid #38444d !important;}
+    ion-card>ion-item{padding-left: 0 !important; background: #15202b !important}
+    ion-card h2, ion-card p, ion-note{color: white !important;}
+    ion-card-content{margin-top: -2.5em !important; font-size: 1em; position: relative; z-index: 9; padding-left: 3.75em; padding-right: 0 !important}
+    ion-avatar{margin-right: 6px !important}
+    ion-card>ion-item>.item-inner>.input-wrapper{align-items: flex-end; padding-bottom: .5rem; font-size: .65em !important; height: 3em !important}
+
+    .tweet_info, .tweet_info_user{display: flex}
+    .tweet_info img{width: 45px; height: 45px}
+    .tweet_info_user{flex-direction: column; margin-left: .5rem}
+    .user_tweet{font-size: .8em; width: 28rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap}
+    .link_user{color: #8c8c8c;}
+    .tweet_date{font-size: 1.2rem; color: #8c8c8c !important;}
+  }
+
+  ion-footer{
+    .next_button{display: flex; flex-direction: column; justify-content: center; align-items: flex-end; width: 100%; bottom: 0; left: 0; background: #172232; padding: .4rem 1rem 1.4rem 1rem;}
+    ion-textarea{padding: 0 .8rem !important}
+    .next_button textarea{width: 100% !important; height:8rem; border-radius: 20px!important; background: #10171e !important; padding: .8rem 1rem; color: white !important}
+    .next_button .next_button-btn{float: right; height: 2.8rem !important; margin-top: -.2rem; margin-right: 1rem; font-size: 1rem !important; padding-left: 1.3rem !important; padding-right: 1.3rem !important; }
+  }
 }

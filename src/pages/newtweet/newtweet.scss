@@ -9,7 +9,7 @@ page-newtweet {
     .tweet_info img{width: 35px; height: 35px; border-radius: 50%; margin-left: 2rem}
     /*.create_tweet{position: absolute; right: 2rem; bottom: 2rem;}*/
 
-    .next_button{position: fixed !important; display: flex; justify-content: space-between; align-items: center; width: 100%; height: 5.5rem; bottom: 0; background: #172232; border-bottom: 1px solid #2b384b; padding: .4rem 0 1.4rem 0;}
+    .next_button{position: fixed !important; width: 100%; height: 5.5rem; bottom: 0; background: #172232; border-bottom: 1px solid #2b384b; padding: .4rem 0 1.4rem 0;}
     .next_button .next_button-btn{float: right; height: 2.8rem !important; margin-right: 2rem; font-size: 1rem !important; padding-left: 1.3rem !important; padding-right: 1.3rem !important; }
     .add_pic_tweet{margin-left: 2rem; font-size: 2.2rem; color: #488aff}
   }
